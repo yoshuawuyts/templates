@@ -14,10 +14,10 @@ shell-bin      Create a new Shell executable
 ```
 
 ## See Also
+- [yoshuawuyts/dotfiles](https://github.com/yoshuawuyts/dotfiles)
+- [yoshuawuyts/infrastructure](https://github.com/yoshuawuyts/infrastructure)
 - [yoshuawuyts/knowledge](https://github.com/yoshuawuyts/knowledge)
 - [yoshuawuyts/writing](https://github.com/yoshuawuyts/writing)
-- [yoshuawuyts/dotfiles](https://github.com/yoshuawuyts/dotfiles)
-- [yoshuawuyts/infra](https://github.com/yoshuawuyts/infra)
 
 ## License
 [MIT](https://tldrlegal.com/license/mit-license)
