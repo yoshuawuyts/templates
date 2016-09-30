@@ -1,0 +1,5 @@
+#!/bin/sh
+
+package_name="$(pwd | sed 's/.*\///g')"
+
+sed "s/{{package_name}}/$package_name/g" < Cargo.toml

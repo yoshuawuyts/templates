@@ -1,0 +1,6 @@
+#!/bin/sh
+
+mkdir -p assets/
+mkdir -p elements/
+mkdir -p pages/
+mkdir -p scripts/

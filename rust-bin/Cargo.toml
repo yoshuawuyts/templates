@@ -1,0 +1,6 @@
+[package]
+name = "{{package_name}}"
+version = "1.0.0"
+authors = ["Yoshua Wuyts <yoshuawuyts@gmail.com>"]
+
+[dependencies]
