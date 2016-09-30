@@ -7,4 +7,3 @@ fi
 mkdir "$1"
 cd "$1" || exit 1
 ew shell main
-
