@@ -1,0 +1,10 @@
+#!/bin/sh
+
+if [ $# = "0" ]; then
+  printf 'usage: ew shell <filename>\n'
+  exit 1
+fi
+
+touch "$1"
+chmod +x "$1"
+printf '#!/bin/sh\n' > "$1"
