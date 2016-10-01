@@ -20,8 +20,7 @@ basic version you can place in your `/usr/bin` directory (or equivalent):
 ```sh
 #!/bin/sh
 
-test -z "$TEMPLATES"
-if [ $? -eq 0 ]; then
+if [ ! -z "$TEMPLATES" ]; then
   printf 'bin/ew: TEMPLATES variable not set\n'
   exit 1
 fi
