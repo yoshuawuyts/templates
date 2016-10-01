@@ -1,0 +1,8 @@
+#!/bin/sh
+
+initialize -h > /dev/null
+if [ $? -ne 0 ]; then
+  npm i -g initialize
+fi
+
+initialize "$@"
