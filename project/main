@@ -1,0 +1,26 @@
+#!/bin/sh
+
+dirname=$(dirname "$(readlink -f "$0")")
+
+replace () {
+  sed "s/{{$1}}/$2/g"
+}
+
+if [ $# = "0" ]; then
+  printf 'usage: ew project <projectname>\n'
+  exit 1
+fi
+
+projectname="$1"
+
+mkdir -p "$projectname"
+cd "$projectname" || exit 1
+
+readme="$(readlink -f "$dirname/README.md")"
+replace projectname "$projectname" < "$readme" > README.md
+
+gitignore="$(readlink -f "$dirname/_gitignore")"
+echo "$gitignore" > .gitignore
+
+license="$(readlink -f "$dirname/LICENSE")"
+echo "$license" > LICENSE

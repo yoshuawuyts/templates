@@ -5,4 +5,11 @@ if [ $? -ne 0 ]; then
   npm i -g initialize
 fi
 
-initialize "$@"
+if [ ! -z "$1" ]; then
+  name="$1"
+  shift
+  initialize "$@"
+  "$name"
+else
+  initialize "$@"
+fi

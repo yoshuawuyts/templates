@@ -1,0 +1,8 @@
+#!/bin/sh
+
+if [ $# = "0" ]; then
+  printf 'usage: ew playground <projectname>\n'
+  exit 1
+fi
+
+ew project "playground-$1"
