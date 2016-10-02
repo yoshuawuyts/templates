@@ -5,4 +5,8 @@ if [ $# = "0" ]; then
   exit 1
 fi
 
-ew project "playground-$1"
+name="playground-$1"
+ew project "$name"
+
+readme="$(pwd)/$name/README.md"
+gsed -i '3 i ##See also\n' "$readme"
