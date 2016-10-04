@@ -1,7 +1,26 @@
 #!/bin/sh
 
-mkdir -p tmp
-cd tmp || exit 1
-ew rust tmp
+tmpdir="asdf"
+
+# run
+ew rust "$tmpdir"
+cd "$tmpdir" || exit 1
+
+# inspect
 tree
-for f in *; do cat "$f"; done
+print () {
+  for f in *; do
+    if [ -f "$f" ]; then
+      cat "$f";
+    elif [ -d "$f" ]; then
+      cd "$f" || exit 1
+      print
+      cd ../ || exit 1
+    fi
+  done
+}
+print
+
+# cleanup
+cd ../ || exit 1
+rm -rf "$tmpdir"

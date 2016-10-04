@@ -7,6 +7,10 @@ install_dep () {
   cargo add "$1"
 }
 
+replace () {
+  sed "s/{{$1}}/$2/g"
+}
+
 config="$(readlink -f "$dirname/../config.json")"
 if [ ! -f "$config" ]; then
   printf 'error: config.json file not found\n'
@@ -18,12 +22,13 @@ if [ $# = "0" ]; then
   exit 1
 fi
 
-username="$(jq -r '.username')"
-email="$(jq -r '.email')"
+username="$(jq -r '.username' < "$config")"
+email="$(jq -r '.email' < "$config")"
 projectname="$1"
 
 # create base project
 ew project "$projectname"
+cd "$projectname" || exit 1
 
 # create dirs
 mkdir -p 'src/'
@@ -32,13 +37,18 @@ mkdir -p 'src/'
 infile="Cargo.toml"
 outfile="Cargo.toml"
 tmpfile="$(readlink -f "$dirname/$infile")"
-replace PROJECTNAME "$projectname" \
+  replace PROJECTNAME "$projectname" < "$tmpfile" \
   | replace USERNAME "$username" \
   | replace EMAIL "$email" \
-  < "$tmpfile" > "$outfile"
+  > "$outfile"
 
 infile="main.rs"
 outfile="src/main.rs"
+tmpfile="$(readlink -f "$dirname/$infile")"
+echo "$tmpfile" > "$outfile"
+
+infile="errors.rs"
+outfile="src/errors.rs"
 tmpfile="$(readlink -f "$dirname/$infile")"
 echo "$tmpfile" > "$outfile"
 
