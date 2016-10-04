@@ -4,6 +4,22 @@ if [ $# = "0" ]; then
   printf 'usage: ew template <template_name>\n'
 fi
 
-mkdir "$1"
-cd "$1" || exit 1
+name="$1"
+mkdir "$name"
+cd "$name" || exit 1
 ew shell main
+cd ../ || exit 1
+
+# create template
+tmpl="
+if [ $# = \"0\" ]; then
+  printf 'usage: ew NAME
+fi
+"
+tmpl="$(echo "$tmpl" | sed "s|NAME|name|g")"
+
+# add template to 'main'
+file="$(pwd)/$name/main"
+echo "$tmpl" >> "$file"
+gsed -i "3 i $tmpl" "$file"
+cat "$file"
