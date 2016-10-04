@@ -1,5 +1,7 @@
 #!/bin/sh
 
+dirname=$(dirname "$(readlink -f "$0")")
+
 if [ $# = "0" ]; then
   printf 'usage: ew template <template_name>\n'
 fi
@@ -10,16 +12,8 @@ cd "$name" || exit 1
 ew shell main
 cd ../ || exit 1
 
-# create template
-tmpl="
-if [ $# = \"0\" ]; then
-  printf 'usage: ew NAME
-fi
-"
-tmpl="$(echo "$tmpl" | sed "s|NAME|name|g")"
-
-# add template to 'main'
+tmpl="$(gsed "s/NAME/$name/g" < "$dirname/template.sh")"
 file="$(pwd)/$name/main"
-echo "$tmpl" >> "$file"
-gsed -i "3 i $tmpl" "$file"
+printf "\n%s\n" "$tmpl" >> "$file"
+gsed "3 i $tmpl" -i "$file"
 cat "$file"

@@ -1,0 +1,7 @@
+#!/bin/sh
+
+mkdir -p tmp
+cd tmp || exit 1
+ew rust tmp
+tree
+for f in *; do cat "$f"; done

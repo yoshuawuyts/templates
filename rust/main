@@ -1,0 +1,47 @@
+#!/bin/sh
+
+dirname=$(dirname "$(readlink -f "$0")")
+
+install_dep () {
+  printf 'cargo: installing %s\n' "$1"
+  cargo add "$1"
+}
+
+config="$(readlink -f "$dirname/../config.json")"
+if [ ! -f "$config" ]; then
+  printf 'error: config.json file not found\n'
+  exit 1
+fi
+
+if [ $# = "0" ]; then
+  printf 'usage: ew rust <projectname>\n'
+  exit 1
+fi
+
+username="$(jq -r '.username')"
+email="$(jq -r '.email')"
+projectname="$1"
+
+# create base project
+ew project "$projectname"
+
+# create dirs
+mkdir -p 'src/'
+
+# create files
+infile="Cargo.toml"
+outfile="Cargo.toml"
+tmpfile="$(readlink -f "$dirname/$infile")"
+replace PROJECTNAME "$projectname" \
+  | replace USERNAME "$username" \
+  | replace EMAIL "$email" \
+  < "$tmpfile" > "$outfile"
+
+infile="main.rs"
+outfile="src/main.rs"
+tmpfile="$(readlink -f "$dirname/$infile")"
+echo "$tmpfile" > "$outfile"
+
+# install stuff
+install_dep clippy
+install_dep error-chain
