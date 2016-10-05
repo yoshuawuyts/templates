@@ -1,6 +1,21 @@
 #!/bin/sh
 
+# dirs
+mkdir -p actions/
 mkdir -p assets/
 mkdir -p elements/
+mkdir -p lib/
+mkdir -p models/
 mkdir -p pages/
 mkdir -p scripts/
+
+# install
+npm i -S \
+  choo \
+  choo-log \
+  choo-persist \
+  bulk-require
+
+npm i -D \
+  bankai \
+  bulkify
