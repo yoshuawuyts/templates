@@ -9,7 +9,8 @@ if [ ! -z "$1" ]; then
   name="$1"
   shift
   initialize "$@"
-  "$name"
+  cd "$name" || exit 1
 else
   initialize "$@"
+  cd "$name" || exit 1
 fi
