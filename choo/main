@@ -1,7 +1,11 @@
 #!/bin/sh
 
+dirname=$(dirname "$(readlink -f "$0")")
+
+ew project "$1"
+cd "$1" || exit 1
+
 # dirs
-mkdir -p actions/
 mkdir -p assets/
 mkdir -p elements/
 mkdir -p lib/
@@ -14,8 +18,14 @@ npm i -S \
   choo \
   choo-log \
   choo-persist \
-  bulk-require
+  bulk-require \
+  tachyons
 
 npm i -D \
   bankai \
   bulkify
+
+infile="index.js"
+outfile="index.js"
+tmpfile="$(readlink -f "$dirname/$infile")"
+cat "$tmpfile" > "$outfile"

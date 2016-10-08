@@ -19,8 +19,12 @@ cd "$projectname" || exit 1
 readme="$(readlink -f "$dirname/README.md")"
 replace projectname "$projectname" < "$readme" > README.md
 
-gitignore="$(readlink -f "$dirname/_gitignore")"
-echo "$gitignore" > .gitignore
+infile="_gitignore"
+outfile=".gitignore"
+tmpfile="$(readlink -f "$dirname/$infile")"
+cat "$tmpfile" > "$outfile"
 
-license="$(readlink -f "$dirname/LICENSE")"
-echo "$license" > LICENSE
+infile="LICENSE"
+outfile="LICENSE"
+tmpfile="$(readlink -f "$dirname/$infile")"
+cat "$tmpfile" > "$outfile"

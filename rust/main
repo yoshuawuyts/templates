@@ -45,12 +45,12 @@ tmpfile="$(readlink -f "$dirname/$infile")"
 infile="main.rs"
 outfile="src/main.rs"
 tmpfile="$(readlink -f "$dirname/$infile")"
-echo "$tmpfile" > "$outfile"
+"$outfile" < "$tmpfile"
 
 infile="errors.rs"
 outfile="src/errors.rs"
 tmpfile="$(readlink -f "$dirname/$infile")"
-echo "$tmpfile" > "$outfile"
+"$outfile" < "$tmpfile"
 
 # install stuff
 install_dep clippy
