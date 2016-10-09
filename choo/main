@@ -2,7 +2,7 @@
 
 dirname=$(dirname "$(readlink -f "$0")")
 
-ew project "$1"
+project-base "$1"
 cd "$1" || exit 1
 npm init -y
 

@@ -19,7 +19,7 @@ copy () {
 }
 
 if [ $# = "0" ]; then
-  printf 'usage: ew project <projectname>\n'
+  printf 'usage: project-base <projectname>\n'
   exit 1
 fi
 
