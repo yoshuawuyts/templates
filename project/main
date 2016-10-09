@@ -1,0 +1,22 @@
+#!/bin/sh
+
+choose () {
+  printf 'What kind of project do you want to create? ' > /dev/tty
+  printf '(base|node|rust)\n' > /dev/tty
+  printf '❯ ' > /dev/tty
+  read -r project
+  echo "$project"
+}
+
+if [ ! "$1" ]; then
+  CHOICE="$(choose)"
+else
+  CHOICE="$1"
+fi
+
+case "$CHOICE" in
+  b|base) ew project-base "$@" ;;
+  n|node) ew project-node "$@" ;;
+  r|rust) ew project-rust "$@" ;;
+  *) { printf 'No valid project selected. Exiting'; exit 1; }
+esac
