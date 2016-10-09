@@ -19,17 +19,11 @@ copy () {
 }
 
 if [ $# = "0" ]; then
-  printf 'usage: ew project <projectname>\n'
+  printf 'usage: ew docker <dirname>\n'
   exit 1
 fi
 
-projectname="$1"
-mkdir -p "$projectname"
-cd "$projectname" || exit 1
+mkdir -p "$1"
+cd "$1" || exit 1
 
-readf "README.md" \
-  | replace projectname "$projectname" \
-  > README.md
-
-copy "_gitignore" ".gitignore"
-copy "LICENSE" "LICENSE"
+copy "Dockerfile" "Dockerfile"
