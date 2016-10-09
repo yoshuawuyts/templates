@@ -23,7 +23,19 @@ if [ $# = "0" ]; then
   exit 1
 fi
 
+printf 'What does this Dockerfile do?\n'
+read -r desc
+if [ "$desc" = "" ]; then
+  printf 'no description provided, exiting\n'
+  exit 1
+fi
+
 mkdir -p "$1"
 cd "$1" || exit 1
 
-copy "Dockerfile" "Dockerfile"
+readf 'README.md' \
+  | replace 'NAME' "$1" \
+  | replace 'DESCRIPTION' "$desc" \
+  > README.md
+
+copy 'Dockerfile' 'Dockerfile'
