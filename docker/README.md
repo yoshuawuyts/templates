@@ -1,9 +1,9 @@
-# NAME
-DESCRIPTION
+# {{NAME}}
+{{DESCRIPTION}}
 
 ## Usage
 ```sh
-$ docker run -i yoshuawuyts/NAME
+$ docker run -i yoshuawuyts/{{NAME}}
 ```
 
 ## See Also
