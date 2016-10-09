@@ -27,7 +27,7 @@ email="$(jq -r '.email' < "$config")"
 projectname="$1"
 
 # create base project
-project-base "$projectname"
+ew project-base "$projectname"
 cd "$projectname" || exit 1
 
 # create dirs

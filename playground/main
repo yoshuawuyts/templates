@@ -6,7 +6,7 @@ if [ $# = "0" ]; then
 fi
 
 name="playground-$1"
-project-base "$name"
+ew project-base "$name"
 
 readme="$(pwd)/$name/README.md"
 gsed -i '3 i ## See also\n' "$readme"
