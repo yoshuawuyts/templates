@@ -2,6 +2,18 @@
 
 dirname=$(dirname "$(readlink -f "$0")")
 
+copy () {
+  infile="$1"
+  outfile="$2"
+  tmpfile="$(readlink -f "$dirname/$infile")"
+  cat "$tmpfile" > "$outfile"
+}
+
+readf () {
+  file="$(readlink -f "$dirname/$1")"
+  cat "$file"
+}
+
 install_dep () {
   printf 'cargo: installing %s\n' "$1"
   cargo add "$1"
@@ -34,23 +46,14 @@ cd "$projectname" || exit 1
 mkdir -p 'src/'
 
 # create files
-infile="Cargo.toml"
-outfile="Cargo.toml"
-tmpfile="$(readlink -f "$dirname/$infile")"
-  replace PROJECTNAME "$projectname" < "$tmpfile" \
+readf Cargo.toml \
+  | replace PROJECTNAME "$projectname" \
   | replace USERNAME "$username" \
   | replace EMAIL "$email" \
-  > "$outfile"
+  > "Cargo.toml"
 
-infile="main.rs"
-outfile="src/main.rs"
-tmpfile="$(readlink -f "$dirname/$infile")"
-"$outfile" < "$tmpfile"
-
-infile="errors.rs"
-outfile="src/errors.rs"
-tmpfile="$(readlink -f "$dirname/$infile")"
-"$outfile" < "$tmpfile"
+copy "main.rs" "src/main.rs"
+copy "errors.rs" "src/errors.rs"
 
 # install stuff
 install_dep clippy
