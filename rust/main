@@ -30,24 +30,24 @@ if [ ! -f "$config" ]; then
 fi
 
 if [ $# = "0" ]; then
-  printf 'usage: ew rust <projectname>\n'
+  printf 'usage: ew rust <NAME>\n'
   exit 1
 fi
 
 username="$(jq -r '.username' < "$config")"
 email="$(jq -r '.email' < "$config")"
-projectname="$1"
+NAME="$1"
 
 # create base project
-ew project-base "$projectname"
-cd "$projectname" || exit 1
+ew project-base "$NAME"
+cd "$NAME" || exit 1
 
 # create dirs
 mkdir -p 'src/'
 
 # create files
 readf Cargo.toml \
-  | replace PROJECTNAME "$projectname" \
+  | replace PROJECTNAME "$NAME" \
   | replace USERNAME "$username" \
   | replace EMAIL "$email" \
   > "Cargo.toml"

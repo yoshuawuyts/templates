@@ -15,19 +15,19 @@ copy () {
   infile="$1"
   outfile="$2"
   tmpfile="$(readlink -f "$dirname/$infile")"
-  cat "$tmpfile" > "$outfile"
+  cp --preserve=mode "$tmpfile" "$outfile"
 }
 
-# define PROJECTNAME
+# define NAME
 if [ -z "$1" ]; then
   printf 'What is the name of the project?\n❯ '
-  read -r PROJECTNAME
-  if [ "$PROJECTNAME" = "" ]; then
+  read -r NAME
+  if [ "$NAME" = "" ]; then
     printf 'no name provided, exiting\n'
     exit 1
   fi
 else
-  PROJECTNAME="$1"
+  NAME="$1"
 fi
 
 # define DESCRIPTION
@@ -42,13 +42,26 @@ else
   DESCRIPTION="$2"
 fi
 
-mkdir -p "$PROJECTNAME"
-cd "$PROJECTNAME" || exit 1
+# create base project
+ew project-base "$NAME" "$DESCRIPTION"
+cd "$NAME" || exit 1
 
-readf "README.md" \
-  | replace PROJECTNAME "$PROJECTNAME" \
-  | replace DESCRIPTION "$DESCRIPTION" \
-  > README.md
+readf 'index.js' \
+  | replace 'DESCRIPTION' "$DESCRIPTION" \
+  > index.js
 
-copy "_gitignore" ".gitignore"
-copy "LICENSE" "LICENSE"
+readf 'package.json' \
+  | replace 'NAME' "$NAME" \
+  | replace 'DESCRIPTION' "$DESCRIPTION" \
+  > package.json
+
+mkdir -p scripts
+copy 'scripts/test' 'scripts/test'
+
+# install
+yarn add --dev \
+  standard \
+  standard-markdown \
+  dependency-check
+
+yarn install

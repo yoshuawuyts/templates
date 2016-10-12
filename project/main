@@ -8,15 +8,28 @@ choose () {
   echo "$project"
 }
 
-if [ ! "$1" ]; then
+if [ -z "$1" ]; then
   CHOICE="$(choose)"
 else
   CHOICE="$1"
 fi
 
+# define NAME
+if [ -z "$2" ]; then
+  printf 'What is the name of the project?\n❯ '
+  read -r NAME
+  if [ "$NAME" = "" ]; then
+    printf 'no name provided, exiting\n'
+    exit 1
+  fi
+else
+  NAME="$2"
+fi
+
+shift 2
 case "$CHOICE" in
-  b|base) ew project-base "$@" ;;
-  n|node) ew project-node "$@" ;;
-  r|rust) ew project-rust "$@" ;;
+  b|base) ew project-base "$NAME" "$@" ;;
+  n|node) ew project-node "$NAME" "$@" ;;
+  r|rust) ew project-rust "$NAME" "$@" ;;
   *) { printf 'No valid project selected. Exiting'; exit 1; }
 esac
