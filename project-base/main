@@ -52,3 +52,5 @@ readf "README.md" \
 
 copy "_gitignore" ".gitignore"
 copy "LICENSE" "LICENSE"
+
+git init
