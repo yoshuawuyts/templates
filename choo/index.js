@@ -36,7 +36,9 @@ if (process.env.NODE_ENV === 'development') {
 function mainView (state, prev, send) {
   return html`
     <body>
-      <main>hello world</main>
+      <main>
+        <h1 class="f-6">choo choo</h1>
+      </main>
       <link rel="stylesheet" href="bundle.css">
       <script src="bundle.js"></script>
     </body>
