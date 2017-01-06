@@ -1,22 +1,9 @@
 #!/bin/sh
 
-dirname=$(dirname "$(readlink -f "$0")")
+__dirname=$(dirname "$(readlink -f "$0")")
 
-readf () {
-  file="$(readlink -f "$dirname/$1")"
-  cat "$file"
-}
-
-replace () {
-  sed "s/{{$1}}/$2/g"
-}
-
-copy () {
-  infile="$1"
-  outfile="$2"
-  tmpfile="$(readlink -f "$dirname/$infile")"
-  cat "$tmpfile" > "$outfile"
-}
+# shellcheck source=/dev/null
+. "$(readlink -f "$__dirname/../shared.sh")"
 
 # define PROJECTNAME
 if [ -z "$1" ]; then
@@ -45,12 +32,12 @@ fi
 mkdir -p "$PROJECTNAME"
 cd "$PROJECTNAME" || exit 1
 
-readf "README.md" \
+readf "$__dirname/README.md" \
   | replace PROJECTNAME "$PROJECTNAME" \
   | replace DESCRIPTION "$DESCRIPTION" \
   > README.md
 
-copy "_gitignore" ".gitignore"
-copy "LICENSE" "LICENSE"
+copy "$__dirname/_gitignore" ".gitignore"
+copy "$__dirname/LICENSE" "LICENSE"
 
 git init

@@ -59,9 +59,7 @@ mkdir -p scripts
 copy 'scripts/test' 'scripts/test'
 
 # install
-yarn add --dev \
+npm install -D \
   standard \
   standard-markdown \
   dependency-check
-
-yarn install

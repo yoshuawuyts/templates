@@ -1,5 +1,6 @@
 #!/bin/sh
 
+echo hi
 dirname=$(dirname "$(readlink -f "$0")")
 
 readf () {
@@ -30,14 +31,14 @@ mkdir -p pages/
 mkdir -p scripts/
 
 # install
-yarn add \
-  choo@4 \
+npm install \
+  choo@next \
   choo-log \
   choo-persist \
   bulk-require \
   tachyons
 
-yarn add --dev \
+npm install -D \
   bankai \
   bulkify
 
