@@ -34,7 +34,7 @@ mkdir -p "$1"
 cd "$1" || exit 1
 
 readf 'README.md' \
-  | replace 'NAME' "$1" \
+  | replace 'PROJECTNAME' "$1" \
   | replace 'DESCRIPTION' "$desc" \
   > README.md
 

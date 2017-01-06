@@ -17,6 +17,6 @@ copy () {
 }
 
 if [ $# = "0" ]; then
-  printf 'usage: ew NAME\n'
+  printf 'usage: ew PROJECTNAME\n'
   exit 1
 fi

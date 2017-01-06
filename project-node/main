@@ -1,33 +1,20 @@
 #!/bin/sh
 
-dirname=$(dirname "$(readlink -f "$0")")
+__dirname=$(dirname "$(readlink -f "$0")")
+# shellcheck source=/dev/null
+. "$(readlink -f "$__dirname/../shared.sh")"
 
-readf () {
-  file="$(readlink -f "$dirname/$1")"
-  cat "$file"
-}
 
-replace () {
-  sed "s/{{$1}}/$2/g"
-}
-
-copy () {
-  infile="$1"
-  outfile="$2"
-  tmpfile="$(readlink -f "$dirname/$infile")"
-  cp --preserve=mode "$tmpfile" "$outfile"
-}
-
-# define NAME
+# define PROJECTNAME
 if [ -z "$1" ]; then
   printf 'What is the name of the project?\n❯ '
-  read -r NAME
-  if [ "$NAME" = "" ]; then
+  read -r PROJECTNAME
+  if [ "$PROJECTNAME" = "" ]; then
     printf 'no name provided, exiting\n'
     exit 1
   fi
 else
-  NAME="$1"
+  PROJECTNAME="$1"
 fi
 
 # define DESCRIPTION
@@ -43,15 +30,15 @@ else
 fi
 
 # create base project
-ew project-base "$NAME" "$DESCRIPTION"
-cd "$NAME" || exit 1
+ew project-base "$PROJECTNAME" "$DESCRIPTION"
+cd "$PROJECTNAME" || exit 1
 
 readf 'index.js' \
   | replace 'DESCRIPTION' "$DESCRIPTION" \
   > index.js
 
 readf 'package.json' \
-  | replace 'NAME' "$NAME" \
+  | replace 'PROJECTNAME' "$PROJECTNAME" \
   | replace 'DESCRIPTION' "$DESCRIPTION" \
   > package.json
 

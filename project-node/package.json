@@ -1,5 +1,5 @@
 {
-  "name": "{{NAME}}",
+  "name": "{{PROJECTNAME}}",
   "description": "{{DESCRIPTION}}",
   "version": "1.0.0",
   "private": true,

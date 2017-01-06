@@ -14,22 +14,22 @@ else
   CHOICE="$1"
 fi
 
-# define NAME
+# define PROJECTNAME
 if [ -z "$2" ]; then
   printf 'What is the name of the project?\n❯ '
-  read -r NAME
-  if [ "$NAME" = "" ]; then
+  read -r PROJECTNAME
+  if [ "$PROJECTNAME" = "" ]; then
     printf 'no name provided, exiting\n'
     exit 1
   fi
 else
-  NAME="$2"
+  PROJECTNAME="$2"
 fi
 
 shift 2
 case "$CHOICE" in
-  b|base) ew project-base "$NAME" "$@" ;;
-  n|node) ew project-node "$NAME" "$@" ;;
-  r|rust) ew project-rust "$NAME" "$@" ;;
+  b|base) ew project-base "$PROJECTNAME" "$@" ;;
+  n|node) ew project-node "$PROJECTNAME" "$@" ;;
+  r|rust) ew project-rust "$PROJECTNAME" "$@" ;;
   *) { printf 'No valid project selected. Exiting'; exit 1; }
 esac
