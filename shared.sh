@@ -13,3 +13,7 @@ copy () {
   tmpfile="$(readlink -f "$infile")"
   cat "$tmpfile" > "$outfile"
 }
+
+to_camel_case () {
+  gsed 's/[_|-]\([a-z]\)/\U\1/g;s/^\([a-z]\)/\1/g'
+}

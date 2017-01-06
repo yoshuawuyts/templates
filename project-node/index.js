@@ -1,5 +1,6 @@
-const assert = require('assert')
+var assert = require('assert')
 
-// {{DESCRIPTION}}
-module.exports = function () {
+module.exports = CAMELNAME
+
+function CAMELNAME () {
 }

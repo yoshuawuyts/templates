@@ -29,12 +29,14 @@ else
   DESCRIPTION="$2"
 fi
 
+CAMELNAME="$(echo "$PROJECTNAME" | to_camel_case)"
+
 # create base project
 ew project-base "$PROJECTNAME" "$DESCRIPTION"
 cd "$PROJECTNAME" || exit 1
 
 readf 'index.js' \
-  | replace 'DESCRIPTION' "$DESCRIPTION" \
+  | replace 'CAMELNAME' "$CAMELNAME" \
   > index.js
 
 readf 'package.json' \
@@ -48,5 +50,4 @@ copy 'scripts/test' 'scripts/test'
 # install
 npm install -D \
   standard \
-  standard-markdown \
   dependency-check

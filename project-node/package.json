@@ -4,8 +4,9 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
+    "deps": "dependency-check . && dependency-check . --extra --no-dev",
     "start": "node .",
-    "test": "./scripts/test"
+    "test": "standard && npm run deps"
   },
   "dependencies": {},
   "devDependencies": {}
