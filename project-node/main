@@ -35,17 +35,14 @@ CAMELNAME="$(echo "$PROJECTNAME" | to_camel_case)"
 ew project-base "$PROJECTNAME" "$DESCRIPTION"
 cd "$PROJECTNAME" || exit 1
 
-readf 'index.js' \
+readf "$__dirname/index.js" \
   | replace 'CAMELNAME' "$CAMELNAME" \
   > index.js
 
-readf 'package.json' \
+readf "$__dirname/package.json" \
   | replace 'PROJECTNAME' "$PROJECTNAME" \
   | replace 'DESCRIPTION' "$DESCRIPTION" \
   > package.json
-
-mkdir -p scripts
-copy 'scripts/test' 'scripts/test'
 
 # install
 npm install -D \

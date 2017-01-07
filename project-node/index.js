@@ -1,6 +1,6 @@
 var assert = require('assert')
 
-module.exports = CAMELNAME
+module.exports = {{CAMELNAME}}
 
-function CAMELNAME () {
+function {{CAMELNAME}} () {
 }
