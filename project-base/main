@@ -4,16 +4,16 @@ __dirname=$(dirname "$(readlink -f "$0")")
 # shellcheck source=/dev/null
 . "$(readlink -f "$__dirname/../shared.sh")"
 
-# define PROJECTPROJECTNAME
+# define PROJECTNAME
 if [ -z "$1" ]; then
   printf 'What is the name of the project?\n❯ '
-  read -r PROJECTPROJECTNAME
-  if [ "$PROJECTPROJECTNAME" = "" ]; then
+  read -r PROJECTNAME
+  if [ "$PROJECTNAME" = "" ]; then
     printf 'no name provided, exiting\n'
     exit 1
   fi
 else
-  PROJECTPROJECTNAME="$1"
+  PROJECTNAME="$1"
 fi
 
 # define DESCRIPTION
@@ -28,11 +28,11 @@ else
   DESCRIPTION="$2"
 fi
 
-mkdir -p "$PROJECTPROJECTNAME"
-cd "$PROJECTPROJECTNAME" || exit 1
+mkdir -p "$PROJECTNAME"
+cd "$PROJECTNAME" || exit 1
 
 readf "$__dirname/README.md" \
-  | replace PROJECTPROJECTNAME "$PROJECTPROJECTNAME" \
+  | replace PROJECTNAME "$PROJECTNAME" \
   | replace DESCRIPTION "$DESCRIPTION" \
   > README.md
 

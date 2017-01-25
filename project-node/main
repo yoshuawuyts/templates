@@ -1,9 +1,7 @@
 #!/bin/sh
 
 __dirname=$(dirname "$(readlink -f "$0")")
-# shellcheck source=/dev/null
 . "$(readlink -f "$__dirname/../shared.sh")"
-
 
 # define PROJECTNAME
 if [ -z "$1" ]; then
@@ -29,6 +27,18 @@ else
   DESCRIPTION="$2"
 fi
 
+# define USERNAME
+if [ -z "$3" ]; then
+  printf 'Under what user on GitHub will this project live?\n❯ '
+  read -r USERNAME
+  if [ "$USERNAME" = "" ]; then
+    printf 'no username provided, exiting\n'
+    exit 1
+  fi
+else
+  USERNAME="$3"
+fi
+
 CAMELNAME="$(echo "$PROJECTNAME" | to_camel_case)"
 
 # create base project
@@ -42,9 +52,10 @@ readf "$__dirname/index.js" \
 readf "$__dirname/package.json" \
   | replace 'PROJECTNAME' "$PROJECTNAME" \
   | replace 'DESCRIPTION' "$DESCRIPTION" \
+  | replace 'USERNAME' "$USERNAME" \
   > package.json
 
 # install
-npm install -D \
+npc -D \
   standard \
   dependency-check
