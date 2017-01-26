@@ -1,0 +1,7 @@
+#!/bin/sh
+
+__dirname=$(dirname "$(readlink -f "$0")")
+. "$(readlink -f "$__dirname/../shared.sh")"
+
+copy "$__dirname/bin.js" "bin.js"
+chmod +x "bin.js"
