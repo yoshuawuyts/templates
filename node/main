@@ -1,16 +1,81 @@
 #!/bin/sh
 
-initialize -h > /dev/null
-if [ $? -ne 0 ]; then
-  npm i -g initialize
+__dirname=$(dirname "$(readlink -f "$0")")
+. "$(readlink -f "$__dirname/../shared.sh")"
+
+parse_keywords () {
+  keywords="$1"
+  keywords="$(echo "$keywords" | sed 's/,/ /g' | sed 's/  / /g' | tr ' ' '\n')"
+  str=""
+  for f in $keywords; do
+    str="$str\"$f\","
+  done
+
+  keywords="$str"
+  keywords="$(echo "$keywords" | sed '$ s/,$//' | sed 's/,/, /' | tr ' ' '\n')"
+  keywords="$(printf '[\n%s\n]\n' "$keywords")"
+  keywords="$(printf '{\nkeywords: %s\n}' "$keywords")"
+  echo "$keywords"
+}
+
+# define PROJECTNAME
+if [ -z "$1" ]; then
+  printf 'What is the name of the project?\n❯ '
+  read -r PROJECTNAME
+  if [ "$PROJECTNAME" = "" ]; then
+    printf 'no name provided, exiting\n'
+    exit 1
+  fi
+else
+  PROJECTNAME="$1"
 fi
 
-if [ ! -z "$1" ]; then
-  name="$1"
-  shift
-  initialize "$@"
-  cd "$name" || exit 1
+# define DESCRIPTION
+if [ -z "$2" ]; then
+  printf 'What does this project do?\n❯ '
+  read -r DESCRIPTION
+  if [ "$DESCRIPTION" = "" ]; then
+    printf 'no description provided, exiting\n'
+    exit 1
+  fi
 else
-  initialize "$@"
-  cd "$name" || exit 1
+  DESCRIPTION="$2"
 fi
+
+# define USERNAME
+if [ -z "$3" ]; then
+  printf 'Under what user on GitHub will this project live?\n❯ '
+  read -r USERNAME
+  if [ "$USERNAME" = "" ]; then
+    printf 'no username provided, exiting\n'
+    exit 1
+  fi
+else
+  USERNAME="$3"
+fi
+
+# create base project
+ew project-node "$PROJECTNAME" "$DESCRIPTION" "$USERNAME"
+cd "$PROJECTNAME" || exit 1
+
+# define KEYWORDS
+if [ -z "$4" ]; then
+  printf 'What keywords should we include?\n❯ '
+  read -r KEYWORDS
+else
+  KEYWORDS="$4"
+fi
+keywords="$(parse_keywords "$KEYWORDS")"
+
+pkg="$(cat package.json)"
+pkg="$(echo "$pkg" | jq 'del(.private)')"
+pkg="$(echo "$pkg" | jq ". + $keywords")"
+echo "$pkg" > package.json
+
+readf "$__dirname/travis.yml" > .travis.yml
+
+readf "$__dirname/README.md" \
+  | replace PROJECTNAME "$PROJECTNAME" \
+  | replace DESCRIPTION "$DESCRIPTION" \
+  | replace USERNAME "$USERNAME" \
+  > README.md
