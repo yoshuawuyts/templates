@@ -3,5 +3,14 @@
 __dirname=$(dirname "$(readlink -f "$0")")
 . "$(readlink -f "$__dirname/../shared.sh")"
 
+name="$(jq '.name' < package.json)"
 copy "$__dirname/bin.js" "bin.js"
 chmod +x "bin.js"
+
+script="{bin: {"
+script="$script$name"
+script="$script: \"./bin.js\" } }"
+pkg="$(jq ". + $script" < package.json)"
+echo "$pkg" > package.json
+
+npc -S minimist
