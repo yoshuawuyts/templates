@@ -57,5 +57,7 @@ readf "$__dirname/package.json" \
 
 # install
 npc -D \
+  tap \
+  nyc \
   standard \
   dependency-check
