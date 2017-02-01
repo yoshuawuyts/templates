@@ -1,29 +1,14 @@
 #!/bin/sh
 
-dirname=$(dirname "$(readlink -f "$0")")
-
-copy () {
-  infile="$1"
-  outfile="$2"
-  tmpfile="$(readlink -f "$dirname/$infile")"
-  cat "$tmpfile" > "$outfile"
-}
-
-readf () {
-  file="$(readlink -f "$dirname/$1")"
-  cat "$file"
-}
+__dirname=$(dirname "$(readlink -f "$0")")
+. "$(readlink -f "$__dirname/../shared.sh")"
 
 install_dep () {
   printf 'cargo: installing %s\n' "$1"
   cargo add "$1"
 }
 
-replace () {
-  sed "s/{{$1}}/$2/g"
-}
-
-config="$(readlink -f "$dirname/../config.json")"
+config="$(readlink -f "$__dirname/../config.json")"
 if [ ! -f "$config" ]; then
   printf 'error: config.json file not found\n'
   exit 1
@@ -46,15 +31,13 @@ cd "$PROJECTNAME" || exit 1
 mkdir -p 'src/'
 
 # create files
-readf Cargo.toml \
-  | replace PROJECTPROJECTNAME "$PROJECTNAME" \
-  | replace USERPROJECTNAME "$username" \
+readf "$__dirname/Cargo.toml" \
+  | replace PROJECTNAME "$PROJECTNAME" \
+  | replace USERNAME "$username" \
   | replace EMAIL "$email" \
   > "Cargo.toml"
 
-copy "main.rs" "src/main.rs"
-copy "errors.rs" "src/errors.rs"
+copy "$__dirname/main.rs" "src/main.rs"
 
 # install stuff
 install_dep clippy
-install_dep error-chain

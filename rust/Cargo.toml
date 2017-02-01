@@ -1,6 +1,6 @@
 [package]
-name = "{{PROJECTPROJECTNAME}}"
+name = "{{PROJECTNAME}}"
 version = "1.0.0"
-authors = ["{{USERPROJECTNAME}} <{{EMAIL}}>"]
+authors = ["{{USERNAME}} <{{EMAIL}}>"]
 
 [dependencies]

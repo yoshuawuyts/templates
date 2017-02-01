@@ -1,4 +1,4 @@
-# {{PROJECTPROJECTNAME}}
+# {{PROJECTTNAME}}
 {{DESCRIPTION}}
 
 ## License
