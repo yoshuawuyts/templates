@@ -41,3 +41,4 @@ copy "$__dirname/main.rs" "src/main.rs"
 
 # install stuff
 install_dep clippy
+cargo install
