@@ -1,0 +1,26 @@
+#!/bin/sh
+
+__dirname=$(dirname "$(readlink -f "$0")")
+. "$(readlink -f "$__dirname/../shared.sh")"
+
+# create base project
+ew project-node "$@"
+cd "$PROJECTNAME" || exit 1
+
+readf "$__dirname/index.js" \
+  > index.js
+
+touch app.js
+
+# install
+npc -S \
+  bankai \
+  choo \
+  choo-log \
+  electron \
+  electron-default-window \
+  merry \
+  sheetify \
+  tachyons
+
+npc -D electron-builder

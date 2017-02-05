@@ -1,22 +1,14 @@
-dirname=$(dirname "$(readlink -f "$0")")
+__dirname=$(dirname "$(readlink -f "$0")")
+. "$(readlink -f "$__dirname/../shared.sh")"
 
-readf () {
-  file="$(readlink -f "$dirname/$1")"
-  cat "$file"
-}
-
-replace () {
-  sed "s/{{$1}}/$2/g"
-}
-
-copy () {
-  infile="$1"
-  outfile="$2"
-  tmpfile="$(readlink -f "$dirname/$infile")"
-  cat "$tmpfile" > "$outfile"
-}
-
-if [ $# = "0" ]; then
-  printf 'usage: ew PROJECTNAME\n'
-  exit 1
+# define PROJECTNAME
+if [ -z "$1" ]; then
+  printf 'What is the name of the project?\n❯ '
+  read -r PROJECTNAME
+  if [ "$PROJECTNAME" = "" ]; then
+    printf 'no name provided, exiting\n'
+    exit 1
+  fi
+else
+  PROJECTNAME="$1"
 fi

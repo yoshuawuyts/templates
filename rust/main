@@ -37,6 +37,8 @@ readf "$__dirname/Cargo.toml" \
   | replace EMAIL "$email" \
   > "Cargo.toml"
 
+readf "$__dirname/gitignore" .gitignore
+
 copy "$__dirname/main.rs" "src/main.rs"
 
 # install stuff
