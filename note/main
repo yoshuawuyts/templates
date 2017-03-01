@@ -1,0 +1,20 @@
+#!/bin/sh
+
+__dirname=$(dirname "$(readlink -f "$0")")
+. "$(readlink -f "$__dirname/../shared.sh")"
+
+# define note
+if [ -z "$1" ]; then
+  printf 'What is the note about?\n❯ '
+  read -r note
+  if [ "$note" = "" ]; then
+    printf 'no details provided, exiting\n'
+    exit 1
+  fi
+else
+  note="$1"
+fi
+
+note="$(echo "$note" | tr ' ' '-')"
+now="$(date -I)"
+touch "$now-$note.md"
