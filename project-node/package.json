@@ -1,7 +1,6 @@
 {
   "name": "{{PROJECTNAME}}",
   "description": "{{DESCRIPTION}}",
-  "description": "{{DESCRIPTION}}",
   "repository": "{{USERNAME}}/{{PROJECTNAME}}",
   "version": "1.0.0",
   "private": true,
