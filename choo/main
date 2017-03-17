@@ -26,21 +26,21 @@ cd "$1" || exit 1
 mkdir -p assets/
 mkdir -p elements/
 mkdir -p lib/
-mkdir -p models/
-mkdir -p pages/
-mkdir -p scripts/
+mkdir -p stores/
+mkdir -p views/
 
 # install
 npm install \
   choo@next \
   choo-log \
-  choo-persist \
-  bulk-require \
+  choo-expose \
+  sheetify \
   tachyons
 
 npm install -D \
   bankai \
-  bulkify
+  dependency-check \
+  standard
 
 copy "index.js" "index.js"
 
