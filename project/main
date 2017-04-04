@@ -29,6 +29,7 @@ fi
 shift 2
 case "$CHOICE" in
   b|base) ew project-base "$PROJECTNAME" "$@" ;;
+  c|choo) ew project-choo "$PROJECTNAME" "$@" ;;
   n|node) ew project-node "$PROJECTNAME" "$@" ;;
   r|rust) ew project-rust "$PROJECTNAME" "$@" ;;
   *) { printf 'No valid project selected. Exiting'; exit 1; }
