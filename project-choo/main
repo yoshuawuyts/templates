@@ -66,7 +66,7 @@ mkdir -p stores/
 mkdir -p views/
 
 # install
-npm install \
+npm install -S \
   choo@next \
   choo-log \
   choo-expose \
@@ -79,6 +79,14 @@ npm install -D \
   standard
 
 copy "index.js" "index.js"
+
+pkg="$(cat package.json)"
+pkg="$(echo "$pkg" | jq 'del(.scripts.coverage)')"
+pkg="$(echo "$pkg" | jq '.scripts + { build: "bankai build" }')"
+pkg="$(echo "$pkg" | jq '.scripts + { inspect: "bankai inspect" }')"
+pkg="$(echo "$pkg" | jq '.scripts + { start: "bankai start" }')"
+pkg="$(echo "$pkg" | jq '.scripts + { start: "bankai start" }')"
+echo "$pkg" > package.json
 
 git init
 git add -A

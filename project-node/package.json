@@ -7,8 +7,7 @@
   "scripts": {
     "deps": "dependency-check . && dependency-check . --extra --no-dev",
     "start": "node .",
-    "test": "standard && npm run deps",
-    "coverage": "nyc report --reporter=text-lcov > coverage.lcov"
+    "test": "standard && npm run deps"
   },
   "dependencies": {},
   "devDependencies": {}

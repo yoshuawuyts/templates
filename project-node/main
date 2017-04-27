@@ -57,7 +57,6 @@ readf "$__dirname/package.json" \
 
 # install
 npc -D \
-  nyc \
   tape \
   standard \
   dependency-check
