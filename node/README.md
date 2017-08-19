@@ -1,4 +1,4 @@
-# {{PROJECTNAME}} [![stability][0]][1]
+# {{PROJECTNAME}}
 [![npm version][2]][3] [![build status][4]][5]
 [![downloads][8]][9] [![js-standard-style][10]][11]
 
