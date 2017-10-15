@@ -70,7 +70,7 @@ keywords="$(parse_keywords "$KEYWORDS")"
 pkg="$(cat package.json)"
 pkg="$(echo "$pkg" | jq 'del(.private)')"
 pkg="$(echo "$pkg" | jq ". + $keywords")"
-pkg="$(echo "$pkg" | jq '. + { license: "MIT" }')"
+pkg="$(echo "$pkg" | jq '. + { license: "Apache-2.0" }')"
 echo "$pkg" > package.json
 
 readf "$__dirname/travis.yml" > .travis.yml

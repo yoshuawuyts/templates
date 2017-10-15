@@ -41,4 +41,4 @@ $ ew shell my_cool_shell_script
 - [yoshuawuyts/writing](https://github.com/yoshuawuyts/writing)
 
 ## License
-[MIT](https://tldrlegal.com/license/mit-license)
+[Apache-2.0](https://tldrlegal.com/license/mit-license)
