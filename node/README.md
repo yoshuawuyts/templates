@@ -4,6 +4,11 @@
 
 {{DESCRIPTION}}
 
+## Installation
+```sh
+$ npm install {{PROJECTNAME}}
+```
+
 ## License
 [Apache-2.0](./LICENSE)
 
