@@ -13,7 +13,7 @@ readf "$__dirname/index.js" \
 touch app.js
 
 # install
-npc -S \
+npm install -S \
   bankai \
   choo \
   choo-log \
@@ -23,4 +23,4 @@ npc -S \
   sheetify \
   tachyons
 
-npc -D electron-builder
+npm install -D electron-builder

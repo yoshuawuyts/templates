@@ -13,4 +13,4 @@ script="$script: \"./bin.js\" } }"
 pkg="$(jq ". + $script" < package.json)"
 echo "$pkg" > package.json
 
-npc -S minimist
+npm install -S minimist

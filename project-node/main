@@ -56,7 +56,7 @@ readf "$__dirname/package.json" \
   > package.json
 
 # install
-npc -D \
+npm install -D \
   tape \
   standard \
   dependency-check
