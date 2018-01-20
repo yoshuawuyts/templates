@@ -1,2 +1,1 @@
-#![feature(plugin)]
-#![plugin(clippy)]
+

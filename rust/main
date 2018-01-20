@@ -1,46 +1,18 @@
 #!/bin/sh
 
 __dirname=$(dirname "$(readlink -f "$0")")
-. "$(readlink -f "$__dirname/../shared.sh")"
-
-install_dep () {
-  printf 'cargo: installing %s\n' "$1"
-  cargo add "$1"
-}
-
-config="$(readlink -f "$__dirname/../config.json")"
-if [ ! -f "$config" ]; then
-  printf 'error: config.json file not found\n'
-  exit 1
-fi
+source "$(readlink -f "$__dirname/../shared.sh")"
 
 if [ $# = "0" ]; then
   printf 'usage: ew rust <PROJECTNAME>\n'
   exit 1
 fi
 
-username="$(jq -r '.username' < "$config")"
-email="$(jq -r '.email' < "$config")"
-PROJECTNAME="$1"
+# Create base project
+cargo init "$@"
+ew project-base "$1"
 
-# create base project
-ew project-base "$PROJECTNAME"
-cd "$PROJECTNAME" || exit 1
-
-# create dirs
-mkdir -p 'src/'
-
-# create files
-readf "$__dirname/Cargo.toml" \
-  | replace PROJECTNAME "$PROJECTNAME" \
-  | replace USERNAME "$username" \
-  | replace EMAIL "$email" \
-  > "Cargo.toml"
-
-readf "$__dirname/gitignore" .gitignore
-
-copy "$__dirname/main.rs" "src/main.rs"
-
-# install stuff
-install_dep clippy
-cargo install
+# Copy files
+pushd "$1"
+copy "$__dirname/rustfmt.toml" rustfmt.toml
+popd

@@ -11,6 +11,7 @@ copy () {
   infile="$1"
   outfile="$2"
   tmpfile="$(readlink -f "$infile")"
+  echo "[copy] $tmpfile $outfile"
   cat "$tmpfile" > "$outfile"
 }
 
