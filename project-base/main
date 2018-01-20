@@ -37,6 +37,11 @@ readf "$__dirname/README.md" \
   > README.md
 
 copy "$__dirname/_gitignore" ".gitignore"
-copy "$__dirname/LICENSE" "LICENSE"
+
+echo '[copy] LICENSE'
+readf "$__dirname/LICENSE" \
+  | replace YEAR "$(date +%Y)" \
+  | replace NAME "Yoshua Wuyts" \
+  > LICENSE
 
 git init
