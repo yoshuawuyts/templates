@@ -15,4 +15,5 @@ ew project-base "$1"
 # Copy files
 pushd "$1"
 copy "$__dirname/rustfmt.toml" rustfmt.toml
+echo "target/" >> .gitignore
 popd
