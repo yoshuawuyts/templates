@@ -8,6 +8,42 @@ if [ $# = "0" ]; then
   exit 1
 fi
 
+# define PROJECTNAME
+if [ -z "$1" ]; then
+  printf 'What is the name of the project?\n❯ '
+  read -r PROJECTNAME
+  if [ "$PROJECTNAME" = "" ]; then
+    printf 'no name provided, exiting\n'
+    exit 1
+  fi
+else
+  PROJECTNAME="$1"
+fi
+
+# define DESCRIPTION
+if [ -z "$2" ]; then
+  printf 'What does this project do?\n❯ '
+  read -r DESCRIPTION
+  if [ "$DESCRIPTION" = "" ]; then
+    printf 'no description provided, exiting\n'
+    exit 1
+  fi
+else
+  DESCRIPTION="$2"
+fi
+
+# define USERNAME
+if [ -z "$3" ]; then
+  printf 'Under what user on GitHub will this project live?\n❯ '
+  read -r USERNAME
+  if [ "$USERNAME" = "" ]; then
+    printf 'no username provided, exiting\n'
+    exit 1
+  fi
+else
+  USERNAME="$3"
+fi
+
 # Create base project
 cargo init "$@"
 ew project-base "$1"
@@ -17,4 +53,10 @@ pushd "$1"
 copy "$__dirname/rustfmt.toml" rustfmt.toml
 echo "target/" >> .gitignore
 ew github
+
+readf "$__dirname/README.md" \
+  | replace PROJECTNAME "$PROJECTNAME" \
+  | replace DESCRIPTION "$DESCRIPTION" \
+  | replace USERNAME "$USERNAME" \
+  > README.md
 popd
