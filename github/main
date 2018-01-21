@@ -1,0 +1,10 @@
+#!/bin/sh
+
+__dirname=$(dirname "$(readlink -f "$0")")
+. "$(readlink -f "$__dirname/../shared.sh")"
+
+copy "$dirname/CODE_OF_CONDUCT.md" > "CODE_OF_CONDUCT.md"
+copy "$dirname/CONTRIBUTING.md" > "CONTRIBUTING.md"
+copy "$dirname/CERTIFICATE.md" > "CERTIFICATE.md"
+copy "$dirname/ISSUE_TEMPLATE.md" > "ISSUE_TEMPLATE.md"
+copy "$dirname/PULL_REQUEST_TEMPLATE.md" > "PULL_REQUEST_TEMPLATE.md"
