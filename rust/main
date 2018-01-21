@@ -46,7 +46,7 @@ fi
 
 # Create base project
 cargo init "$@"
-ew project-base "$1"
+ew project-base "$PROJECTNAME" "$DESCRIPTION" "$USERNAME"
 
 # Copy files
 pushd "$1"
