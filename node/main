@@ -80,3 +80,5 @@ readf "$__dirname/README.md" \
   | replace DESCRIPTION "$DESCRIPTION" \
   | replace USERNAME "$USERNAME" \
   > README.md
+
+ew github

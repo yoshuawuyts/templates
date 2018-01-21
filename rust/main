@@ -16,4 +16,5 @@ ew project-base "$1"
 pushd "$1"
 copy "$__dirname/rustfmt.toml" rustfmt.toml
 echo "target/" >> .gitignore
+ew github
 popd
