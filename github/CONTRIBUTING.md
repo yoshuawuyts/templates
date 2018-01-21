@@ -58,7 +58,7 @@ Don't be a bad actor.
 
 ## Developer Certificate of Origin
 All contributors must read and agree to the [Developer Certificate of
-Origin (DCO)](./CERTIFICATE.md).
+Origin (DCO)](../CERTIFICATE).
 
 The DCO allows us to accept contributions from people to the project, similarly
 to how a license allows us to distribute our code.
