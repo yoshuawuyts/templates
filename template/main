@@ -12,7 +12,7 @@ cd "$name" || exit 1
 ew shell main
 cd ../ || exit 1
 
-tmpl="$(gsed "s/PROJECTNAME/$name/g" < "$dirname/template.sh")"
+tmpl="$(sed "s/PROJECTNAME/$name/g" < "$dirname/template.sh")"
 file="$(pwd)/$name/main"
 printf "\n%s\n" "$tmpl" >> "$file"
-gsed "3 i $tmpl" -i "$file"
+sed "3 i $tmpl" -i "$file"

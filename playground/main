@@ -9,4 +9,4 @@ name="playground-$1"
 ew project-base "$name"
 
 readme="$(pwd)/$name/README.md"
-gsed -i '3 i ## See also\n' "$readme"
+sed -i '3 i ## See also\n' "$readme"
