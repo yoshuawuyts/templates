@@ -8,11 +8,8 @@ replace () {
 }
 
 copy () {
-  infile="$1"
-  outfile="$2"
-  infile="$(readlink -f "$infile")"
-  echo "[copy] $infile -> $outfile"
-  cat "$infile" > "$outfile"
+  echo "[copy] $1 -> $2" >&2
+  cp "$1" "$2"
 }
 
 to_camel_case () {
