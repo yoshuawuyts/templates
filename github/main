@@ -1,10 +1,11 @@
 #!/bin/sh
 
 __dirname=$(dirname "$(readlink -f "$0")")
-. "$(readlink -f "$__dirname/../shared.sh")"
+source "$(readlink -f "$__dirname/../shared.sh")"
 
-copy "$dirname/CODE_OF_CONDUCT.md" > "CODE_OF_CONDUCT.md"
-copy "$dirname/CONTRIBUTING.md" > "CONTRIBUTING.md"
-copy "$dirname/CERTIFICATE.md" > "CERTIFICATE.md"
-copy "$dirname/ISSUE_TEMPLATE.md" > "ISSUE_TEMPLATE.md"
-copy "$dirname/PULL_REQUEST_TEMPLATE.md" > "PULL_REQUEST_TEMPLATE.md"
+mkdir -p ".github/"
+copy "$__dirname/CODE_OF_CONDUCT.md" > ".github/CODE_OF_CONDUCT.md"
+copy "$__dirname/CONTRIBUTING.md" > ".github/CONTRIBUTING.md"
+copy "$__dirname/CERTIFICATE.md" > ".github/CERTIFICATE.md"
+copy "$__dirname/ISSUE_TEMPLATE.md" > ".github/ISSUE_TEMPLATE.md"
+copy "$__dirname/PULL_REQUEST_TEMPLATE.md" > ".github/PULL_REQUEST_TEMPLATE.md"

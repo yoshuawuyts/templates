@@ -10,9 +10,9 @@ replace () {
 copy () {
   infile="$1"
   outfile="$2"
-  tmpfile="$(readlink -f "$infile")"
-  echo "[copy] $tmpfile $outfile"
-  cat "$tmpfile" > "$outfile"
+  infile="$(readlink -f "$infile")"
+  echo "[copy] $infile -> $outfile"
+  cat "$infile" > "$outfile"
 }
 
 to_camel_case () {
