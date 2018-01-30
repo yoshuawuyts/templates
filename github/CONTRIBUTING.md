@@ -14,9 +14,9 @@ Repository.
 - [Developer Certificate of Origin](#developer-certificate-of-origin)
 
 ## Code of Conduct
-The project has a [Code of Conduct][] that *all* contributors are
-expected to follow. This code describes the *minimum* behavior expectations
-for all contributors.
+The project has a [Code of Conduct][./CODE_OF_CONDUCT.md] that *all*
+contributors are expected to follow. This code describes the *minimum* behavior
+expectations for all contributors.
 
 As a contributor, how you choose to act and interact towards your
 fellow contributors, as well as to the community, will reflect back not only
@@ -25,11 +25,10 @@ intended, above all else, to help establish a culture within the project that
 allows anyone and everyone who wants to contribute to feel safe doing so.
 
 Should any individual act in any way that is considered in violation of the
-[Code of Conduct][], corrective actions will be taken. It is possible,
-however,
-for any individual to *act* in such a manner that is not in violation of the
-strict letter of the Code of Conduct guidelines while still going completely
-against the spirit of what that Code is intended to accomplish.
+[Code of Conduct][./CODE_OF_CONDUCT.md], corrective actions will be taken. It is
+possible, however, for any individual to *act* in such a manner that is not in
+violation of the strict letter of the Code of Conduct guidelines while still
+going completely against the spirit of what that Code is intended to accomplish.
 
 Open, diverse, and inclusive communities live and die on the basis of trust.
 Contributors can disagree with one another so long as they trust that those
