@@ -51,6 +51,7 @@ ew project-base "$PROJECTNAME" "$DESCRIPTION" "$USERNAME"
 # Copy files
 pushd "$1"
 copy "$__dirname/rustfmt.toml" rustfmt.toml
+copy "$__dirname/travis.yml" .travis.yml
 echo "target/" >> .gitignore
 ew github
 
