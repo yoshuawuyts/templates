@@ -19,7 +19,7 @@ $ cargo add {{PROJECTNAME}}
 [1]: https://img.shields.io/crates/v/{{PROJECTNAME}}.svg?style=flat-square
 [2]: https://crates.io/crate/{{PROJECTNAME}}
 [3]: https://img.shields.io/travis/{{USERNAME}}/{{PROJECTNAME}}.svg?style=flat-square
-[4]: https://travis-ci.org/choojs/{{USERNAME}}/{{PROJECTNAME}}
+[4]: https://travis-ci.org/{{USERNAME}}/{{PROJECTNAME}}
 [5]: https://img.shields.io/crates/d/{{PROJECTNAME}}.svg?style=flat-square
 [6]: https://crates.io/crates/{{PROJECTNAME}}
 [7]: https://docs.rs/{{PROJECTNAME}}/badge.svg?version=0.1.0
