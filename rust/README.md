@@ -22,5 +22,5 @@ $ cargo add {{PROJECTNAME}}
 [4]: https://travis-ci.org/{{USERNAME}}/{{PROJECTNAME}}
 [5]: https://img.shields.io/crates/d/{{PROJECTNAME}}.svg?style=flat-square
 [6]: https://crates.io/crates/{{PROJECTNAME}}
-[7]: https://docs.rs/{{PROJECTNAME}}/badge.svg?version=0.1.0
+[7]: https://docs.rs/{{PROJECTNAME}}/badge.svg
 [8]: https://docs.rs/{{PROJECTNAME}}
