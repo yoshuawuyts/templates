@@ -3,6 +3,8 @@
 __dirname=$(dirname "$(readlink -f "$0")")
 source "$(readlink -f "$__dirname/../shared.sh")"
 
+EMAIL="yoshuawuyts@gmail.com"
+
 if [ $# = "0" ]; then
   printf 'usage: ew rust <PROJECTNAME>\n'
   exit 1
@@ -52,6 +54,7 @@ ew project-base "$PROJECTNAME" "$DESCRIPTION" "$USERNAME"
 pushd "$1"
 copy "$__dirname/rustfmt.toml" rustfmt.toml
 copy "$__dirname/travis.yml" .travis.yml
+copy "$__dirname/lib.rs" src/lib.rs
 echo "target/" >> .gitignore
 ew github
 
@@ -60,4 +63,13 @@ readf "$__dirname/README.md" \
   | replace DESCRIPTION "$DESCRIPTION" \
   | replace USERNAME "$USERNAME" \
   > README.md
+
+readf "$__dirname/Cargo.toml" \
+  | replace PROJECTNAME "$PROJECTNAME" \
+  | replace DESCRIPTION "$DESCRIPTION" \
+  | replace USERNAME "$USERNAME" \
+  | replace EMAIL "$EMAIL" \
+  > Cargo.toml
+
+cargo add -D clippy
 popd

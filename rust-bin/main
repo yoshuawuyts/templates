@@ -1,3 +1,4 @@
 #!/bin/sh
 
 ew rust "$@" --bin
+copy "$__dirname/main.rs" src/main.rs
