@@ -2,16 +2,15 @@
 [![crates.io version][1]][2] [![build status][3]][4]
 [![downloads][5]][6] [![docs.rs docs][7]][8]
 
-{{DESCRIPTION}}
+{{DESCRIPTION}}.
+
+- [Documentation][8]
+- [Crate][2]
 
 ## Installation
 ```sh
 $ cargo add {{PROJECTNAME}}
 ```
-
-## Links
-- [documentation][8]
-- [crate][2]
 
 ## License
 [Apache-2.0](./LICENSE)
