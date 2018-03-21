@@ -54,9 +54,12 @@ ew project-base "$PROJECTNAME" "$DESCRIPTION" "$USERNAME"
 pushd "$1"
 copy "$__dirname/rustfmt.toml" rustfmt.toml
 copy "$__dirname/travis.yml" .travis.yml
-copy "$__dirname/lib.rs" src/lib.rs
 echo "target/" >> .gitignore
 ew github
+
+readf "$__dirname/lib.rs" \
+  | replace DESCRIPTION "$DESCRIPTION" \
+  > src/lib.rs
 
 readf "$__dirname/README.md" \
   | replace PROJECTNAME "$PROJECTNAME" \
@@ -71,5 +74,5 @@ readf "$__dirname/Cargo.toml" \
   | replace EMAIL "$EMAIL" \
   > Cargo.toml
 
-cargo add -D clippy
+cargo add clippy --dev
 popd
