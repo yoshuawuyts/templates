@@ -1,4 +1,5 @@
 #!/bin/sh
 
-ew rust "$@" --bin
+ew rust "$@"
+rm src/lib.rs
 copy "$__dirname/main.rs" src/main.rs
