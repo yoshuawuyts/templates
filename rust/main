@@ -47,7 +47,7 @@ else
 fi
 
 # Create base project
-cargo init
+cargo init "$PROJECTNAME"
 ew project-base "$PROJECTNAME" "$DESCRIPTION" "$USERNAME"
 
 # Copy files
