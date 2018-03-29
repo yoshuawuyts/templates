@@ -16,7 +16,7 @@ $ cargo add {{PROJECTNAME}}
 [Apache-2.0](./LICENSE)
 
 [1]: https://img.shields.io/crates/v/{{PROJECTNAME}}.svg?style=flat-square
-[2]: https://crates.io/crate/{{PROJECTNAME}}
+[2]: https://crates.io/crates/{{PROJECTNAME}}
 [3]: https://img.shields.io/travis/{{USERNAME}}/{{PROJECTNAME}}.svg?style=flat-square
 [4]: https://travis-ci.org/{{USERNAME}}/{{PROJECTNAME}}
 [5]: https://img.shields.io/crates/d/{{PROJECTNAME}}.svg?style=flat-square
