@@ -74,5 +74,5 @@ readf "$__dirname/Cargo.toml" \
   | replace EMAIL "$EMAIL" \
   > Cargo.toml
 
-cargo add clippy --dev
+# cargo add clippy --dev
 popd

@@ -1,5 +1,3 @@
-#![deny(warnings, missing_docs)]
-#![cfg_attr(test, feature(plugin))]
-#![cfg_attr(test, plugin(clippy))]
-
-//! {{DESCRIPTION}}
+#![deny(missing_docs)]
+#![feature(external_doc)]
+#![doc(include = "../README.md")]

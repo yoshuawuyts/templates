@@ -5,7 +5,11 @@
 {{DESCRIPTION}}.
 
 - [Documentation][8]
-- [Crate][2]
+- [Crates.io][2]
+
+## Usage
+```rust
+```
 
 ## Installation
 ```sh
