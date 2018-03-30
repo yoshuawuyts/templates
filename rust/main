@@ -47,7 +47,7 @@ else
 fi
 
 # Create base project
-cargo init "$PROJECTNAME"
+cargo init --lib "$PROJECTNAME"
 ew project-base "$PROJECTNAME" "$DESCRIPTION" "$USERNAME"
 
 # Copy files
@@ -75,5 +75,4 @@ readf "$__dirname/Cargo.toml" \
   | replace EMAIL "$EMAIL" \
   > Cargo.toml
 
-rm src/main.rs
 popd
