@@ -31,7 +31,7 @@ if [ -z "$2" ]; then
     exit 1
   fi
 else
-  DESCRIPTION="$2"
+  DESCRIPTION="$(echo "$2" | sed 's|\.$||')."
 fi
 
 # define USERNAME
