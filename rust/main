@@ -71,6 +71,7 @@ readf "$__dirname/Cargo.toml" \
   | replace PROJECTNAME "$PROJECTNAME" \
   | replace DESCRIPTION "$DESCRIPTION" \
   | replace USERNAME "$USERNAME" \
+  | replace AUTHOR "Yoshua Wuyts" \
   | replace EMAIL "$EMAIL" \
   > Cargo.toml
 
