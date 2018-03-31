@@ -8,4 +8,6 @@ description = "{{DESCRIPTION}}"
 authors = ["{{AUTHOR}} <{{EMAIL}}>"]
 
 [dependencies]
+
+[dev-dependencies]
 clippy = "*"
