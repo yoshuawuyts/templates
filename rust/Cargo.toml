@@ -10,4 +10,4 @@ authors = ["{{AUTHOR}} <{{EMAIL}}>"]
 [dependencies]
 
 [dev-dependencies]
-clippy = "*"
+clippy = "0.0"
