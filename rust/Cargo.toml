@@ -6,6 +6,7 @@ repository = "https://github.com/{{USERNAME}}/{{PROJECTNAME}}"
 documentation = "https://docs.rs/{{PROJECTNAME}}"
 description = "{{DESCRIPTION}}"
 authors = ["{{AUTHOR}} <{{EMAIL}}>"]
+readme = "README.md"
 
 [dependencies]
 
