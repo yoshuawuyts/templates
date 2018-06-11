@@ -1,5 +1,8 @@
 #!/bin/sh
 
+__dirname=$(dirname "$(readlink -f "$0")")
+source "$(readlink -f "$__dirname/../shared.sh")"
+
 ew rust "$@"
 copy "$__dirname/main.rs" src/main.rs
 cargo add quicli

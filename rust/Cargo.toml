@@ -11,4 +11,3 @@ readme = "README.md"
 [dependencies]
 
 [dev-dependencies]
-clippy = "0.0"
