@@ -75,4 +75,12 @@ readf "$__dirname/Cargo.toml" \
   | replace EMAIL "$EMAIL" \
   > Cargo.toml
 
+# Base directories
+mkdir tests
+mkdir examples
+mkdir benches
+
+# Empty test file
+touch tests/test.rs
+
 popd
