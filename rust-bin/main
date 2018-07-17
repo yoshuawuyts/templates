@@ -3,6 +3,23 @@
 __dirname=$(dirname "$(readlink -f "$0")")
 source "$(readlink -f "$__dirname/../shared.sh")"
 
+# define PROJECTNAME
+if [ -z "$1" ]; then
+  printf 'What is the name of the project?\n❯ '
+  read -r PROJECTNAME
+  if [ "$PROJECTNAME" = "" ]; then
+    printf 'no name provided, exiting\n'
+    exit 1
+  fi
+else
+  PROJECTNAME="$1"
+fi
+
 ew rust "$@"
+
+pushd "$PROJECTNAME"
+rm src/lib.rs
 copy "$__dirname/main.rs" src/main.rs
-cargo add quicli
+copy "$__dirname/cli.rs" src/cli.rs
+cargo add structopt
+popd

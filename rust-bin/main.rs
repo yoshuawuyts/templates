@@ -2,15 +2,16 @@
 #![cfg_attr(feature = "nightly", feature(external_doc))]
 #![cfg_attr(feature = "nightly", doc(include = "../README.md"))]
 #![cfg_attr(test, deny(warnings))]
-#![cfg_attr(test, feature(plugin))]
-#![cfg_attr(test, plugin(clippy))]
 
 #[macro_use]
-extern crate quicli;
+extern crate structopt;
 
-use quicli::prelude::*;
+mod cli;
 
-#[derive(Debug, StructOpt)]
-struct Args {}
+use cli::Cli;
+use structopt::StructOpt;
 
-main!(|_args: Args| {});
+fn main() -> Result<(), Box<std::error::Error>> {
+  let _args = Cli::from_args();
+  Ok(())
+}
