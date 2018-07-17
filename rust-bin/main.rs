@@ -5,10 +5,9 @@
 
 #[macro_use]
 extern crate structopt;
+extern crate {{PROJECTNAME}};
 
-mod cli;
-
-use cli::Cli;
+use {{PROJECTNAME}}::cli::Cli;
 use structopt::StructOpt;
 
 fn main() -> Result<(), Box<std::error::Error>> {

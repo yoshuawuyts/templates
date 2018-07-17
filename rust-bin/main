@@ -19,6 +19,11 @@ ew rust "$@"
 
 pushd "$PROJECTNAME"
 rm src/lib.rs
+
+readf "$__dirname/main.rs" \
+  | replace PROJECTNAME "$(echo "$PROJECTNAME" | tr '-' '_')" \
+  > src/main.rs
+
 copy "$__dirname/main.rs" src/main.rs
 copy "$__dirname/cli.rs" src/cli.rs
 cargo add structopt
