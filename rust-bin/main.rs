@@ -3,7 +3,6 @@
 #![cfg_attr(feature = "nightly", doc(include = "../README.md"))]
 #![cfg_attr(test, deny(warnings))]
 
-#[macro_use]
 extern crate structopt;
 extern crate {{PROJECTNAME}};
 
