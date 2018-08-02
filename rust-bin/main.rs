@@ -9,7 +9,7 @@ extern crate {{PROJECTNAME}};
 use {{PROJECTNAME}}::cli::Cli;
 use structopt::StructOpt;
 
-fn main() -> Result<(), Box<std::error::Error>> {
+fn main() -> Result<(), Box<dyn std::error::Error>> {
   let _args = Cli::from_args();
   Ok(())
 }
