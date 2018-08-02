@@ -8,7 +8,7 @@
 - [Crates.io][2]
 
 ## Usage
-```rust
+```txt
 ```
 
 ## Installation
