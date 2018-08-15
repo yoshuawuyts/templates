@@ -28,5 +28,8 @@ copy "$__dirname/cli.rs" src/cli.rs
 copy "$__dirname/lib.rs" src/lib.rs
 copy "$__dirname/build.rs" build.rs
 cargo add structopt
+cargo add log
 cargo add -B structopt
+cargo add clap_flags
+cargo add -B clap_flags
 popd

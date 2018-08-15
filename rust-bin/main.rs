@@ -10,6 +10,8 @@ use {{PROJECTNAME}}::cli::Cli;
 use structopt::StructOpt;
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
-  let _args = Cli::from_args();
+  let args = Cli::from_args();
+  args.logger.log_all(args.verbosity.log_level())?;
+  info!("program started");
   Ok(())
 }
