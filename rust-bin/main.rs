@@ -3,6 +3,8 @@
 #![cfg_attr(feature = "nightly", doc(include = "../README.md"))]
 #![cfg_attr(test, deny(warnings))]
 
+#[macro_use]
+extern crate human_panic;
 extern crate structopt;
 #[macro_use]
 extern crate log;
@@ -12,6 +14,7 @@ use {{PROJECTNAME}}::cli::Cli;
 use structopt::StructOpt;
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
+  setup_panic!();
   let args = Cli::from_args();
   args.logger.log_all(args.verbosity.log_level())?;
   info!("program started");
