@@ -4,6 +4,8 @@
 #![cfg_attr(test, deny(warnings))]
 
 extern crate structopt;
+#[macro_use]
+extern crate log;
 extern crate {{PROJECTNAME}};
 
 use {{PROJECTNAME}}::cli::Cli;
