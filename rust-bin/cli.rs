@@ -1,6 +1,7 @@
 use clap_flags;
 use structopt;
 
+/// Commandline parser
 #[derive(Debug, StructOpt)]
 #[structopt(raw(setting = "structopt::clap::AppSettings::ColoredHelp"))]
 pub struct Cli {

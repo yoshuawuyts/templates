@@ -85,4 +85,6 @@ mkdir benches
 # Empty test file
 touch tests/test.rs
 
+cargo add failure
+
 popd

@@ -18,7 +18,6 @@ fi
 ew rust "$@"
 
 pushd "$PROJECTNAME"
-rm src/lib.rs
 
 readf "$__dirname/main.rs" \
   | replace PROJECTNAME "$(echo "$PROJECTNAME" | tr '-' '_')" \
@@ -27,10 +26,13 @@ readf "$__dirname/main.rs" \
 copy "$__dirname/cli.rs" src/cli.rs
 copy "$__dirname/lib.rs" src/lib.rs
 copy "$__dirname/build.rs" build.rs
+
 cargo add human-panic
 cargo add structopt
 cargo add log
-cargo add -B structopt
 cargo add clap_flags
+
+cargo add -B structopt
 cargo add -B clap_flags
+cargo add -B failure
 popd

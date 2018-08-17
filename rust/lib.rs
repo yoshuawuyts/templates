@@ -2,3 +2,11 @@
 #![cfg_attr(feature = "nightly", feature(external_doc))]
 #![cfg_attr(feature = "nightly", doc(include = "../README.md"))]
 #![cfg_attr(test, deny(warnings))]
+
+extern crate failure;
+
+use failure::ResultExt;
+
+mod error;
+
+pub use error::{Error, ErrorKind, Result};
