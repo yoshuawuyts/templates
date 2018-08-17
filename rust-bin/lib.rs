@@ -4,8 +4,6 @@ extern crate clap_flags;
 #[macro_use]
 extern crate failure;
 
-use failure::ResultExt;
-
 mod cli;
 mod error;
 

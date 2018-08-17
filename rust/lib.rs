@@ -5,8 +5,6 @@
 
 extern crate failure;
 
-use failure::ResultExt;
-
 mod error;
 
 pub use error::{Error, ErrorKind, Result};

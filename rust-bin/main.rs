@@ -9,11 +9,13 @@ extern crate structopt;
 #[macro_use]
 extern crate log;
 extern crate {{PROJECTNAME}};
+extern crate exitfailure;
 
-use {{PROJECTNAME}}::cli::Cli;
+use {{PROJECTNAME}}::Cli;
 use structopt::StructOpt;
+use exitfailure::ExitFailure;
 
-fn main() -> Result<(), Box<dyn std::error::Error>> {
+fn main() -> Result<(), ExitFailure> {
   setup_panic!();
   let args = Cli::from_args();
   args.logger.log_all(args.verbosity.log_level())?;
