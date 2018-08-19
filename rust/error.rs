@@ -12,14 +12,6 @@ use std::result;
 /// [`Error`]: std.struct.Error.html
 pub type Result<T> = result::Result<T, Error>;
 
-/// A specialized [`Error`] type for this crate's operations.
-///
-/// [`Error`]: https://doc.rust-lang.org/nightly/std/error/trait.Error.html
-#[derive(Debug)]
-pub struct Error {
-  inner: Context<ErrorKind>,
-}
-
 /// A list enumerating the categories of errors in this crate.
 ///
 /// This list is intended to grow over time and it is not recommended to
@@ -36,6 +28,14 @@ pub enum ErrorKind {
   /// An error caused by an IO failure.
   #[fail(display = "{}", _0)]
   Io(#[cause] io::Error),
+}
+
+/// A specialized [`Error`] type for this crate's operations.
+///
+/// [`Error`]: https://doc.rust-lang.org/nightly/std/error/trait.Error.html
+#[derive(Debug)]
+pub struct Error {
+  inner: Context<ErrorKind>,
 }
 
 impl Error {
