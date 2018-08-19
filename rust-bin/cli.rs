@@ -3,7 +3,10 @@ use structopt;
 
 /// Command line parser.
 #[derive(Debug, StructOpt)]
-#[structopt(raw(setting = "structopt::clap::AppSettings::ColoredHelp"))]
+#[structopt(
+  about = "{{DESCRIPTION}}",
+  raw(setting = "structopt::clap::AppSettings::ColoredHelp")
+)]
 pub struct Cli {
   #[structopt(flatten)]
   pub logger: clap_flags::Log,

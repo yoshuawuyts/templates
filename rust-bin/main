@@ -24,7 +24,10 @@ readf "$__dirname/main.rs" \
   | replace PROJECTNAME "$(echo "$PROJECTNAME" | tr '-' '_')" \
   > src/main.rs
 
-copy "$__dirname/cli.rs" src/cli.rs
+readf "$__dirname/cli.rs" \
+  | replace DESCRIPTION "$DESCRIPTION" \
+  > src/cli.rs
+
 copy "$__dirname/lib.rs" src/lib.rs
 copy "$__dirname/build.rs" build.rs
 
