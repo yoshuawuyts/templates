@@ -86,6 +86,9 @@ mkdir benches
 # Empty test file
 touch tests/test.rs
 
+# Better GitHub integration
+github-templates
+
 cargo add failure
 
 popd
