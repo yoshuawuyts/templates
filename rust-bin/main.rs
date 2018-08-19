@@ -18,7 +18,7 @@ use exitfailure::ExitFailure;
 fn main() -> Result<(), ExitFailure> {
   setup_panic!();
   let args = Cli::from_args();
-  args.logger.log_all(args.verbosity.log_level())?;
+  args.log(env!("CARGO_PKG_NAME"))?;
   info!("program started");
   Ok(())
 }

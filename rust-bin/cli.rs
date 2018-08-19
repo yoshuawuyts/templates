@@ -9,7 +9,19 @@ use structopt;
 )]
 pub struct Cli {
   #[structopt(flatten)]
-  pub logger: clap_flags::Log,
+  logger: clap_flags::Log,
   #[structopt(flatten)]
-  pub verbosity: clap_flags::Verbosity,
+  verbosity: clap_flags::Verbosity,
+}
+
+impl Cli {
+  /// Initialize a logger.
+  #[inline]
+  pub fn log(&self, name: &str) -> ::Result<()> {
+    self
+      .logger
+      .log(self.verbosity.log_level(), name)
+      .context(::ErrorKind::Log)?;
+    Ok(())
+  }
 }
