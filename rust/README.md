@@ -6,9 +6,10 @@
 
 - [Documentation][8]
 - [Crates.io][2]
+- [Releases][9]
 
 ## Usage
-```txt
+```rs
 ```
 
 ## Installation
@@ -27,3 +28,4 @@ $ cargo add {{PROJECTNAME}}
 [6]: https://crates.io/crates/{{PROJECTNAME}}
 [7]: https://img.shields.io/badge/docs-latest-blue.svg?style=flat-square
 [8]: https://docs.rs/{{PROJECTNAME}}
+[9]: https://github.com/{{USERNAME}}/{{PROJECTNAME}}/releases
