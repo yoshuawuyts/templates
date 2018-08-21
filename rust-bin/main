@@ -13,9 +13,24 @@ if [ -z "$1" ]; then
   fi
 else
   PROJECTNAME="$1"
+  shift
 fi
 
-ew rust "$@"
+# define DESCRIPTION
+if [ -z "$2" ]; then
+  printf 'What does this project do?\n❯ '
+  read -r DESCRIPTION
+  if [ "$DESCRIPTION" = "" ]; then
+    printf 'no description provided, exiting\n'
+    exit 1
+  fi
+else
+  DESCRIPTION="$(echo "$2" | sed 's|\.$||')."
+  shift
+fi
+
+
+ew rust "$PROJECTNAME" "$DESCRIPTION" "$@"
 
 pushd "$PROJECTNAME"
 rm src/lib.rs
