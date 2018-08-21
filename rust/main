@@ -84,7 +84,7 @@ mkdir examples
 mkdir benches
 
 # Empty test file
-touch tests/test.rs
+printf '\n' > 'tests/test.rs'
 
 # Better GitHub integration
 github-templates
