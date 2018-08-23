@@ -1,6 +1,8 @@
 use clap_flags;
 use structopt;
 
+use failure::ResultExt;
+
 /// Command line parser.
 #[derive(Debug, StructOpt)]
 #[structopt(
