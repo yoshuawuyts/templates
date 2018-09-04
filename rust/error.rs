@@ -23,7 +23,7 @@ pub type Result<T> = result::Result<T, Error>;
 #[derive(Debug, Fail)]
 pub enum ErrorKind {
   /// An error caused by the logger failing.
-  #[fail(display = "Generic error.")]
+  #[fail(display = "Logger error.")]
   Log,
   /// Any error not part of this list.
   #[fail(display = "Generic error.")]
