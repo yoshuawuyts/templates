@@ -6,9 +6,10 @@
 
 - [Documentation][8]
 - [Crates.io][2]
-- [Releases][9]
+- [Releases][releases]
 
-## Usage
+## Examples
+### Basic
 ```rs
 ```
 
@@ -16,6 +17,20 @@
 ```sh
 $ cargo add {{PROJECTNAME}}
 ```
+
+## Safety
+This crate uses ``#![deny(unsafe_code)]`` to ensure everything is implemented in
+100% Safe Rust.
+
+## Contributing
+Want to join us? Check out our ["Contributing" guide][contributing] and take a
+look at some of these issues:
+
+- [Issues labeled "good first issue"][good-first-issue]
+- [Issues labeled "help wanted"][help-wanted]
+
+## References
+None.
 
 ## License
 [MIT](./LICENSE-MIT) OR [Apache-2.0](./LICENSE-APACHE)
@@ -28,4 +43,8 @@ $ cargo add {{PROJECTNAME}}
 [6]: https://crates.io/crates/{{PROJECTNAME}}
 [7]: https://img.shields.io/badge/docs-latest-blue.svg?style=flat-square
 [8]: https://docs.rs/{{PROJECTNAME}}
-[9]: https://github.com/{{USERNAME}}/{{PROJECTNAME}}/releases
+
+[releases]: https://github.com/{{USERNAME}}/{{PROJECTNAME}}/releases
+[contributing]: https://github.com/{{USERNAME}}/{{PROJECTNAME}}/.github/CONTRIBUTING.md
+[good-first-issue]: https://github.com/{{USERNAME}}/{{PROJECTNAME}}/labels/good%20first%20issue
+[help-wanted]: https://github.com/{{USERNAME}}/{{PROJECTNAME}}/labels/help%20wanted
