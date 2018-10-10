@@ -84,7 +84,10 @@ mkdir examples
 mkdir benches
 
 # Empty test file
-printf '\n' > 'tests/test.rs'
+project_name="$(echo "$PROJECTNAME" | sed 's/-/_//g')"
+readf "$__dirname/test.rs" \
+  | replace PROJECTNAME "$project_name" \
+  > 'tests/test.rs'
 
 # Better GitHub integration
 github-templates
