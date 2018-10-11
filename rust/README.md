@@ -10,7 +10,7 @@
 
 ## Examples
 ### Basic
-```rs
+```rust
 ```
 
 ## Installation
