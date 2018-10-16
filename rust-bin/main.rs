@@ -1,8 +1,5 @@
-#![cfg_attr(feature = "nightly", deny(missing_docs))]
-#![cfg_attr(feature = "nightly", feature(external_doc))]
-#![cfg_attr(feature = "nightly", doc(include = "../README.md"))]
-#![cfg_attr(test, deny(warnings))]
-#![forbid(unsafe_code, missing_debug_implementations)]
+#![forbid(unsafe_code, missing_debug_implementations, missing_docs)]
+#![cfg_attr(test, forbid(warnings))]
 
 #[macro_use]
 extern crate human_panic;
