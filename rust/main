@@ -84,7 +84,7 @@ mkdir examples
 mkdir benches
 
 # Empty test file
-project_name="$(echo "$PROJECTNAME" | sed 's/-/_//g')"
+project_name="$(echo "$PROJECTNAME" | sed 's/\-/_/g')"
 readf "$__dirname/test.rs" \
   | replace PROJECTNAME "$project_name" \
   > 'tests/test.rs'
