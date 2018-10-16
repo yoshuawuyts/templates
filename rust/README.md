@@ -45,6 +45,6 @@ None.
 [8]: https://docs.rs/{{PROJECTNAME}}
 
 [releases]: https://github.com/{{USERNAME}}/{{PROJECTNAME}}/releases
-[contributing]: https://github.com/{{USERNAME}}/{{PROJECTNAME}}/.github/CONTRIBUTING.md
+[contributing]: https://github.com/{{USERNAME}}/{{PROJECTNAME}}/blob/master.github/CONTRIBUTING.md
 [good-first-issue]: https://github.com/{{USERNAME}}/{{PROJECTNAME}}/labels/good%20first%20issue
 [help-wanted]: https://github.com/{{USERNAME}}/{{PROJECTNAME}}/labels/help%20wanted
