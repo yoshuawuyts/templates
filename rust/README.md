@@ -37,9 +37,9 @@ None.
 
 [1]: https://img.shields.io/crates/v/{{PROJECTNAME}}.svg?style=flat-square
 [2]: https://crates.io/crates/{{PROJECTNAME}}
-[3]: https://img.shields.io/travis/{{USERNAME}}/{{PROJECTNAME}}.svg?style=flat-square
+[3]: https://img.shields.io/travis/{{USERNAME}}/{{PROJECTNAME}}/master.svg?style=flat-square
 [4]: https://travis-ci.org/{{USERNAME}}/{{PROJECTNAME}}
-[5]: https://img.shields.io/crates/d/{{PROJECTNAME}}/master.svg?style=flat-square
+[5]: https://img.shields.io/crates/d/{{PROJECTNAME}}.svg?style=flat-square
 [6]: https://crates.io/crates/{{PROJECTNAME}}
 [7]: https://img.shields.io/badge/docs-latest-blue.svg?style=flat-square
 [8]: https://docs.rs/{{PROJECTNAME}}
