@@ -102,6 +102,7 @@ readf "$__dirname/Cargo.toml" \
 
 # Base directories
 mkdir tests
+mkdir tests/fixtures
 mkdir examples
 mkdir benches
 

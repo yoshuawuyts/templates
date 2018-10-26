@@ -5,11 +5,9 @@
 //! ```rust
 //! ```
 
-#[macro_use]
-extern crate structopt;
 extern crate clap_flags;
-#[macro_use]
 extern crate failure;
+extern crate structopt;
 
 mod cli;
 mod error;

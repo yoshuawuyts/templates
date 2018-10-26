@@ -1,7 +1,6 @@
 use clap_flags;
-use structopt;
-
-use failure::ResultExt;
+use failure::{Error, ResultExt};
+use structopt::{self, StructOpt};
 
 /// Command line parser.
 #[derive(Debug, StructOpt)]
@@ -19,11 +18,11 @@ pub struct Cli {
 impl Cli {
   /// Initialize a logger.
   #[inline]
-  pub fn log(&self, name: &str) -> ::Result<()> {
+  pub fn log(&self, name: &str) -> Result<(), Error> {
     self
       .logger
       .log(self.verbosity.log_level(), name)
-      .context(::ErrorKind::Log)?;
+      .context("Could not create logger")?;
     Ok(())
   }
 }

@@ -1,10 +1,13 @@
-extern crate mkdirp;
+extern crate clap_flags;
+extern crate failure;
+extern crate structopt;
 
 use std::path::PathBuf;
 use std::str::FromStr;
 use structopt::{clap::Shell, StructOpt};
 
-include!("src/lib.rs");
+#[path = "src/cli.rs"]
+mod cli;
 
 fn main() -> std::result::Result<(), Box<dyn std::error::Error>> {
   let outdir = ::std::env::var_os("OUT_DIR").expect("OUT_DIR not found.");

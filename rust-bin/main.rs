@@ -1,10 +1,8 @@
-#![forbid(unsafe_code, missing_debug_implementations, missing_docs)]
+#![forbid(unsafe_code, missing_debug_implementations)]
 #![cfg_attr(test, forbid(warnings))]
 
-#[macro_use]
 extern crate human_panic;
 extern crate structopt;
-#[macro_use]
 extern crate log;
 extern crate {{PROJECTNAME}};
 extern crate exitfailure;
@@ -12,6 +10,8 @@ extern crate exitfailure;
 use {{PROJECTNAME}}::Cli;
 use structopt::StructOpt;
 use exitfailure::ExitFailure;
+use human_panic::setup_panic;
+use log::info;
 
 fn main() -> Result<(), ExitFailure> {
   setup_panic!();

@@ -1,6 +1,5 @@
-use failure::{Backtrace, Context, Fail};
+use failure::{self, Backtrace, Context, Fail};
 use std::fmt::{self, Display};
-use std::io;
 use std::result;
 
 /// A specialized [`Result`] type for this crate's operations.
@@ -10,7 +9,7 @@ use std::result;
 ///
 /// [`Result`]: https://doc.rust-lang.org/nightly/std/result/enum.Result.html
 /// [`Error`]: std.struct.Error.html
-pub type Result<T> = result::Result<T, Error>;
+pub type Result<T> = result::Result<T, failure::Error>;
 
 /// A list enumerating the categories of errors in this crate.
 ///
@@ -22,15 +21,9 @@ pub type Result<T> = result::Result<T, Error>;
 /// [`Error`]: std.struct.Error.html
 #[derive(Debug, Fail)]
 pub enum ErrorKind {
-  /// An error caused by the logger failing.
-  #[fail(display = "Logger error.")]
-  Log,
   /// Any error not part of this list.
   #[fail(display = "Generic error.")]
   Other,
-  /// An error caused by an IO failure.
-  #[fail(display = "{}", _0)]
-  Io(#[cause] io::Error),
 }
 
 /// A specialized [`Error`] type for this crate's operations.
