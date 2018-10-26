@@ -5,6 +5,18 @@ set -e
 __dirname=$(dirname "$(readlink -f "$0")")
 source "$(readlink -f "$__dirname/../shared.sh")"
 
+parse_keywords () {
+  keywords="$1"
+  keywords="$(echo "$keywords" | sed 's/,/ /g' | sed 's/  / /g' | tr ' ' '\n')"
+  str=""
+  for f in $keywords; do
+    str="$str\"$f\", "
+  done
+
+  str="$(echo "$str" | sed '$s/, $//')"
+  echo "$str"
+}
+
 EMAIL="yoshuawuyts@gmail.com"
 
 if [ $# = "0" ]; then
@@ -52,6 +64,15 @@ fi
 cargo init --lib "$PROJECTNAME"
 ew project-base "$PROJECTNAME" "$DESCRIPTION" "$USERNAME"
 
+# define KEYWORDS
+if [ -z "$4" ]; then
+  printf 'Which keywords should we include? (max 5)\n❯ '
+  read -r KEYWORDS
+else
+  KEYWORDS="$4"
+fi
+KEYWORDS="$(parse_keywords "$KEYWORDS")"
+
 # Copy files
 pushd "$1"
 copy "$__dirname/rustfmt.toml" rustfmt.toml
@@ -72,6 +93,7 @@ readf "$__dirname/README.md" \
 
 readf "$__dirname/Cargo.toml" \
   | replace PROJECTNAME "$PROJECTNAME" \
+  | replace KEYWORDS "$KEYWORDS" \
   | replace DESCRIPTION "$DESCRIPTION" \
   | replace USERNAME "$USERNAME" \
   | replace AUTHOR "Yoshua Wuyts" \

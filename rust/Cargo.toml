@@ -5,6 +5,7 @@ license = "MIT OR Apache-2.0"
 repository = "https://github.com/{{USERNAME}}/{{PROJECTNAME}}"
 documentation = "https://docs.rs/{{PROJECTNAME}}"
 description = "{{DESCRIPTION}}"
+keywords = [{{KEYWORDS}}]
 authors = ["{{AUTHOR}} <{{EMAIL}}>"]
 readme = "README.md"
 

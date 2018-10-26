@@ -29,7 +29,6 @@ else
   shift
 fi
 
-
 ew rust "$PROJECTNAME" "$DESCRIPTION" "$@"
 
 pushd "$PROJECTNAME"
