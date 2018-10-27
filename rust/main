@@ -5,16 +5,16 @@ set -e
 __dirname=$(dirname "$(readlink -f "$0")")
 source "$(readlink -f "$__dirname/../shared.sh")"
 
-parse_keywords () {
+parse_list () {
   keywords="$1"
-  keywords="$(echo "$keywords" | sed 's/,/ /g' | sed 's/  / /g' | tr ' ' '\n')"
+  keywords="$(echo "$keywords" | sed 's/,/ /g' | sed 's/  / /g')"
   str=""
   for f in $keywords; do
     str="$str\"$f\", "
   done
 
-  str="$(echo "$str" | sed '$s/, $//')"
-  echo "$str"
+  str="$(echo "$str" | sed '$s/, $//' | tr -d '\n')"
+  printf "$str"
 }
 
 EMAIL="yoshuawuyts@gmail.com"
@@ -45,8 +45,9 @@ if [ -z "$2" ]; then
     exit 1
   fi
 else
-  DESCRIPTION="$(echo "$2" | sed 's|\.$||')."
+  DESCRIPTION="$2"
 fi
+DESCRIPTION="$(echo "$DESCRIPTION" | sed 's|\.$||')."
 
 # define USERNAME
 if [ -z "$3" ]; then
@@ -71,7 +72,18 @@ if [ -z "$4" ]; then
 else
   KEYWORDS="$4"
 fi
-KEYWORDS="$(parse_keywords "$KEYWORDS")"
+KEYWORDS="$(parse_list "$KEYWORDS")"
+
+# define CATEGORIES
+if [ -z "$5" ]; then
+  echo 'cats'
+  CATEGORIES="$(cargo-categories)"
+else
+  CATEGORIES="$4"
+fi
+CATEGORIES="$(parse_list "$CATEGORIES")"
+
+echo "CATEGORIES $CATEGORIES"
 
 # Copy files
 pushd "$1"
@@ -94,6 +106,7 @@ readf "$__dirname/README.md" \
 readf "$__dirname/Cargo.toml" \
   | replace PROJECTNAME "$PROJECTNAME" \
   | replace KEYWORDS "$KEYWORDS" \
+  | replace CATEGORIES "$CATEGORIES" \
   | replace DESCRIPTION "$DESCRIPTION" \
   | replace USERNAME "$USERNAME" \
   | replace AUTHOR "Yoshua Wuyts" \
