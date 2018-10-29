@@ -1,4 +1,4 @@
-extern crate PROJECTNAME;
+extern crate {{PROJECTNAME}};
 extern crate failure;
 
 use failure::Error;

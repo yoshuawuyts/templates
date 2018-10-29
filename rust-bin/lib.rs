@@ -12,5 +12,5 @@ extern crate structopt;
 mod cli;
 mod error;
 
-pub use cli::Cli;
-pub use error::{Error, ErrorKind, Result};
+pub use crate::cli::Cli;
+pub use crate::error::{Error, ErrorKind, Result};
