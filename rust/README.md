@@ -9,8 +9,9 @@
 - [Releases][releases]
 
 ## Examples
-### Basic
+__Basic usage__
 ```rust
+// tbi
 ```
 
 ## Installation
