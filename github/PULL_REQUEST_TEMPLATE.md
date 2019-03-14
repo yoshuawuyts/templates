@@ -1,21 +1,14 @@
-<!--
-Thanks for creating a Pull Request 😄 ! Before you submit, please read the following:
-- Read our CONTRIBUTING.md file before submitting a patch.
-- By making a contribution, you agree to our Developer Certificate of Origin.
--->
+<!--- Provide a general summary of your changes in the Title above -->
 
-**Choose one:** is this a 🐛 bug fix, a 🙋 feature, or a 🔦 documentation change?
+## Description
+<!--- Describe your changes in detail -->
 
-<!-- Provide a general summary of the changes in the title above -->
+## Motivation and Context
+<!--- Why is this change required? What problem does it solve? -->
+<!--- If it fixes an open issue, please link to the issue here. -->
 
-## Checklist
-<!-- Remove items that do not apply. For completed items, change [ ] to [x]. -->
-- [ ] tests pass
-- [ ] tests and/or benchmarks are included
-- [ ] documentation is changed or added
-
-## Context
-<!-- Is this related to any GitHub issue(s)? -->
-
-## Semver Changes
-<!-- Which semantic version change would you recommend? -->
+## Types of changes
+<!--- What types of changes does your code introduce? Put an `x` in all the boxes that apply: -->
+- [ ] Bug fix (non-breaking change which fixes an issue)
+- [ ] New feature (non-breaking change which adds functionality)
+- [ ] Breaking change (fix or feature that would cause existing functionality to change)
