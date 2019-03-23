@@ -87,7 +87,6 @@ echo "CATEGORIES $CATEGORIES"
 
 # Copy files
 pushd "$1"
-copy "$__dirname/rustfmt.toml" rustfmt.toml
 copy "$__dirname/gitignore" .gitignore
 copy "$__dirname/travis.yml" .travis.yml
 copy "$__dirname/error.rs" src/error.rs
