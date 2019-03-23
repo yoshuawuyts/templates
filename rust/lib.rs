@@ -1,6 +1,6 @@
-#![forbid(unsafe_code, future_incompatible)]
-#![deny(missing_debug_implementations, bad_style)]
-#![deny(missing_docs)]
+#![forbid(unsafe_code, future_incompatible, rust_2018_idioms)]
+#![deny(missing_debug_implementations, nonstandard_style)]
+#![warn(missing_docs)]
 #![cfg_attr(test, deny(warnings))]
 
 //! ## Example
