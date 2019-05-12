@@ -54,5 +54,4 @@ cargo add clap_flags
 cargo add -B mkdirp
 cargo add -B structopt
 cargo add -B clap_flags
-cargo add -B failure
 popd

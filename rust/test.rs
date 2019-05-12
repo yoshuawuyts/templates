@@ -1,9 +1,6 @@
-extern crate {{PROJECTNAME}};
-extern crate failure;
-
-use failure::Error;
+use std::error::Error;
 
 #[test]
-fn should_work() -> Result<(), Error> {
-  Ok(())
+fn should_work() -> Result<(), Box<dyn Error + Send + Sync + 'static>> {
+    Ok(())
 }

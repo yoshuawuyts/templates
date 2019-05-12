@@ -89,7 +89,6 @@ echo "CATEGORIES $CATEGORIES"
 pushd "$1"
 copy "$__dirname/gitignore" .gitignore
 copy "$__dirname/travis.yml" .travis.yml
-copy "$__dirname/error.rs" src/error.rs
 ew github
 
 readf "$__dirname/lib.rs" \
@@ -126,7 +125,5 @@ readf "$__dirname/test.rs" \
 
 # Better GitHub integration
 github-templates
-
-cargo add failure
 
 popd
