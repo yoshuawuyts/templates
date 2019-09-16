@@ -8,12 +8,6 @@
 - [Crates.io][2]
 - [Releases][releases]
 
-## Examples
-__Basic usage__
-```rust
-// tbi
-```
-
 ## Installation
 ```sh
 $ cargo add {{PROJECTNAME}}

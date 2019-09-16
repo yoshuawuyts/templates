@@ -21,9 +21,9 @@ pub type Result<T> = result::Result<T, failure::Error>;
 /// [`Error`]: std.struct.Error.html
 #[derive(Debug, Fail)]
 pub enum ErrorKind {
-  /// Any error not part of this list.
-  #[fail(display = "Generic error.")]
-  Other,
+    /// Any error not part of this list.
+    #[fail(display = "Generic error.")]
+    Other,
 }
 
 /// A specialized [`Error`] type for this crate's operations.
@@ -31,43 +31,43 @@ pub enum ErrorKind {
 /// [`Error`]: https://doc.rust-lang.org/nightly/std/error/trait.Error.html
 #[derive(Debug)]
 pub struct Error {
-  inner: Context<ErrorKind>,
+    inner: Context<ErrorKind>,
 }
 
 impl Error {
-  /// Access the [`ErrorKind`] member.
-  ///
-  /// [`ErrorKind`]: enum.ErrorKind.html
-  pub fn kind(&self) -> &ErrorKind {
-    &*self.inner.get_context()
-  }
+    /// Access the [`ErrorKind`] member.
+    ///
+    /// [`ErrorKind`]: enum.ErrorKind.html
+    pub fn kind(&self) -> &ErrorKind {
+        &*self.inner.get_context()
+    }
 }
 
 impl Fail for Error {
-  fn cause(&self) -> Option<&dyn Fail> {
-    self.inner.cause()
-  }
+    fn cause(&self) -> Option<&dyn Fail> {
+        self.inner.cause()
+    }
 
-  fn backtrace(&self) -> Option<&Backtrace> {
-    self.inner.backtrace()
-  }
+    fn backtrace(&self) -> Option<&Backtrace> {
+        self.inner.backtrace()
+    }
 }
 
 impl Display for Error {
-  fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-    Display::fmt(&self.inner, f)
-  }
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        Display::fmt(&self.inner, f)
+    }
 }
 
 impl From<ErrorKind> for Error {
-  fn from(kind: ErrorKind) -> Error {
-    let inner = Context::new(kind);
-    Error { inner }
-  }
+    fn from(kind: ErrorKind) -> Error {
+        let inner = Context::new(kind);
+        Error { inner }
+    }
 }
 
 impl From<Context<ErrorKind>> for Error {
-  fn from(inner: Context<ErrorKind>) -> Error {
-    Error { inner }
-  }
+    fn from(inner: Context<ErrorKind>) -> Error {
+        Error { inner }
+    }
 }
