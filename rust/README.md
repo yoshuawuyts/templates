@@ -1,12 +1,45 @@
-# {{PROJECTNAME}}
-[![crates.io version][1]][2] [![build status][3]][4]
-[![downloads][5]][6] [![docs.rs docs][7]][8]
+<h1 align="center">{{PROJECTNAME}}</h1>
+<div align="center">
+  <strong>
+    {{DESCRIPTION}}
+  </strong>
+</div>
 
-{{DESCRIPTION}}
+<br />
 
-- [Documentation][8]
-- [Crates.io][2]
-- [Releases][releases]
+<div align="center">
+  <!-- Crates version -->
+  <a href="https://crates.io/crates/{{PROJECTNAME}}">
+    <img src="https://img.shields.io/crates/v/{{PROJECTNAME}}.svg?style=flat-square"
+    alt="Crates.io version" />
+  </a>
+  <!-- Downloads -->
+  <a href="https://crates.io/crates/{{PROJECTNAME}}">
+    <img src="https://img.shields.io/crates/d/{{PROJECTNAME}}.svg?style=flat-square"
+      alt="Download" />
+  </a>
+  <!-- docs.rs docs -->
+  <a href="https://docs.rs/{{PROJECTNAME}}">
+    <img src="https://img.shields.io/badge/docs-latest-blue.svg?style=flat-square"
+      alt="docs.rs docs" />
+  </a>
+</div>
+
+<div align="center">
+  <h3>
+    <a href="https://docs.rs/{{PROJECTNAME}}">
+      API Docs
+    </a>
+    <span> | </span>
+    <a href="https://github.com/async-rs/async-std/releases">
+      Releases
+    </a>
+    <span> | </span>
+    <a href="https://github.com/{{USERNAME}}/{{PROJECTNAME}}/blob/master.github/CONTRIBUTING.md">
+      Contributing
+    </a>
+  </h3>
+</div>
 
 ## Installation
 ```sh
@@ -24,22 +57,21 @@ look at some of these issues:
 - [Issues labeled "good first issue"][good-first-issue]
 - [Issues labeled "help wanted"][help-wanted]
 
-## References
-None.
-
-## License
-[MIT](./LICENSE-MIT) OR [Apache-2.0](./LICENSE-APACHE)
-
-[1]: https://img.shields.io/crates/v/{{PROJECTNAME}}.svg?style=flat-square
-[2]: https://crates.io/crates/{{PROJECTNAME}}
-[3]: https://img.shields.io/travis/{{USERNAME}}/{{PROJECTNAME}}/master.svg?style=flat-square
-[4]: https://travis-ci.org/{{USERNAME}}/{{PROJECTNAME}}
-[5]: https://img.shields.io/crates/d/{{PROJECTNAME}}.svg?style=flat-square
-[6]: https://crates.io/crates/{{PROJECTNAME}}
-[7]: https://img.shields.io/badge/docs-latest-blue.svg?style=flat-square
-[8]: https://docs.rs/{{PROJECTNAME}}
-
-[releases]: https://github.com/{{USERNAME}}/{{PROJECTNAME}}/releases
 [contributing]: https://github.com/{{USERNAME}}/{{PROJECTNAME}}/blob/master.github/CONTRIBUTING.md
 [good-first-issue]: https://github.com/{{USERNAME}}/{{PROJECTNAME}}/labels/good%20first%20issue
 [help-wanted]: https://github.com/{{USERNAME}}/{{PROJECTNAME}}/labels/help%20wanted
+
+## License
+
+<sup>
+Licensed under either of <a href="LICENSE-APACHE">Apache License, Version
+2.0</a> or <a href="LICENSE-MIT">MIT license</a> at your option.
+</sup>
+
+<br/>
+
+<sub>
+Unless you explicitly state otherwise, any contribution intentionally submitted
+for inclusion in this crate by you, as defined in the Apache-2.0 license, shall
+be dual licensed as above, without any additional terms or conditions.
+</sub>

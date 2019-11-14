@@ -88,7 +88,6 @@ echo "CATEGORIES $CATEGORIES"
 # Copy files
 pushd "$1"
 copy "$__dirname/gitignore" .gitignore
-copy "$__dirname/travis.yml" .travis.yml
 ew github
 
 readf "$__dirname/lib.rs" \
@@ -124,6 +123,7 @@ readf "$__dirname/test.rs" \
   > 'tests/test.rs'
 
 # Better GitHub integration
-github-templates
+mkdir -p .github/workflows
+copy "$__dirname/ci.yaml" .github/workflows/ci.yaml
 
 popd
