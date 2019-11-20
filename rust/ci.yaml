@@ -34,12 +34,6 @@ jobs:
         command: check
         args: --all --bins --examples
 
-    - name: check unstable
-      uses: actions-rs/cargo@v1
-      with:
-        command:  check
-        args: --all --benches --bins --examples --tests
-
     - name: tests
       uses: actions-rs/cargo@v1
       with:
@@ -52,20 +46,11 @@ jobs:
     steps:
     - uses: actions/checkout@master
 
-    - id: component
-      uses: actions-rs/components-nightly@v1
-      with:
-        component: rustfmt
-
     - uses: actions-rs/toolchain@v1
       with:
-          toolchain: ${{ steps.component.outputs.toolchain }}
-          override: true
-
-    - name: setup
-      run: |
-        rustup component add rustfmt
-        rustc --version
+        toolchain: stable
+        profile: minimal
+        components: rustfmt
 
     - name: fmt
       run: cargo fmt --all -- --check
